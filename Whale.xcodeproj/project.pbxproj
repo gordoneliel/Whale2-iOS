@@ -15,6 +15,9 @@
 		052ED92A1E6E6F9A0078ABCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052ED9281E6E6F9A0078ABCF /* LaunchScreen.storyboard */; };
 		052ED9351E6E6F9A0078ABCF /* WhaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ED9341E6E6F9A0078ABCF /* WhaleTests.swift */; };
 		052ED9401E6E6F9A0078ABCF /* WhaleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ED93F1E6E6F9A0078ABCF /* WhaleUITests.swift */; };
+		4E33CA33CDDF701186237457 /* Pods_WhaleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66C8A5FFD48505EC281639C /* Pods_WhaleTests.framework */; };
+		9E6293790283056F58A49429 /* Pods_Whale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A099EF1F1F64FF0550E99A6 /* Pods_Whale.framework */; };
+		DBBBB3F9655A95870E6A9165 /* Pods_WhaleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E515BE67A9DA459B05FB5C /* Pods_WhaleUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,15 @@
 		052ED93B1E6E6F9A0078ABCF /* WhaleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhaleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		052ED93F1E6E6F9A0078ABCF /* WhaleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhaleUITests.swift; sourceTree = "<group>"; };
 		052ED9411E6E6F9A0078ABCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05AB8956A2960E6ADFD4CFE1 /* Pods-Whale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Whale/Pods-Whale.debug.xcconfig"; sourceTree = "<group>"; };
+		0A099EF1F1F64FF0550E99A6 /* Pods_Whale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B022750060D7B58461DF113 /* Pods-WhaleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhaleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhaleTests/Pods-WhaleTests.release.xcconfig"; sourceTree = "<group>"; };
+		52E8DC4AC28B151038DA4C17 /* Pods-WhaleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhaleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhaleTests/Pods-WhaleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2E515BE67A9DA459B05FB5C /* Pods_WhaleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhaleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D0E6CA38C2842BC5D61680 /* Pods-Whale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.release.xcconfig"; path = "Pods/Target Support Files/Pods-Whale/Pods-Whale.release.xcconfig"; sourceTree = "<group>"; };
+		D2FAE584ED896EB1DE72DBB8 /* Pods-WhaleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhaleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhaleUITests/Pods-WhaleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F66C8A5FFD48505EC281639C /* Pods_WhaleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhaleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFE6BFB1C6A0970F90407DC7 /* Pods-WhaleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhaleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhaleUITests/Pods-WhaleUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E6293790283056F58A49429 /* Pods_Whale.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E33CA33CDDF701186237457 /* Pods_WhaleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBBBB3F9655A95870E6A9165 /* Pods_WhaleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				052ED9331E6E6F9A0078ABCF /* WhaleTests */,
 				052ED93E1E6E6F9A0078ABCF /* WhaleUITests */,
 				052ED91A1E6E6F9A0078ABCF /* Products */,
+				3B793E7E611F2C227B29AAD3 /* Pods */,
+				444A4EFCB1A1B28BA024C886 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +145,29 @@
 			path = WhaleUITests;
 			sourceTree = "<group>";
 		};
+		3B793E7E611F2C227B29AAD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05AB8956A2960E6ADFD4CFE1 /* Pods-Whale.debug.xcconfig */,
+				B3D0E6CA38C2842BC5D61680 /* Pods-Whale.release.xcconfig */,
+				52E8DC4AC28B151038DA4C17 /* Pods-WhaleTests.debug.xcconfig */,
+				0B022750060D7B58461DF113 /* Pods-WhaleTests.release.xcconfig */,
+				D2FAE584ED896EB1DE72DBB8 /* Pods-WhaleUITests.debug.xcconfig */,
+				FFE6BFB1C6A0970F90407DC7 /* Pods-WhaleUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		444A4EFCB1A1B28BA024C886 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A099EF1F1F64FF0550E99A6 /* Pods_Whale.framework */,
+				F66C8A5FFD48505EC281639C /* Pods_WhaleTests.framework */,
+				A2E515BE67A9DA459B05FB5C /* Pods_WhaleUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 052ED9441E6E6F9A0078ABCF /* Build configuration list for PBXNativeTarget "Whale" */;
 			buildPhases = (
+				110AC93E74B9E98B8DEC7A40 /* [CP] Check Pods Manifest.lock */,
 				052ED9151E6E6F9A0078ABCF /* Sources */,
 				052ED9161E6E6F9A0078ABCF /* Frameworks */,
 				052ED9171E6E6F9A0078ABCF /* Resources */,
+				FA43908ACAF76AE86CDF57F7 /* [CP] Embed Pods Frameworks */,
+				AE854569F57FD6F3339EBFE2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 052ED9471E6E6F9A0078ABCF /* Build configuration list for PBXNativeTarget "WhaleTests" */;
 			buildPhases = (
+				E8A00AF922797D2DEF4F55D9 /* [CP] Check Pods Manifest.lock */,
 				052ED92C1E6E6F9A0078ABCF /* Sources */,
 				052ED92D1E6E6F9A0078ABCF /* Frameworks */,
 				052ED92E1E6E6F9A0078ABCF /* Resources */,
+				EF2BC5B7B3F61040BA34B5BB /* [CP] Embed Pods Frameworks */,
+				9D08219AC13144CCD41CFBF3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 052ED94A1E6E6F9A0078ABCF /* Build configuration list for PBXNativeTarget "WhaleUITests" */;
 			buildPhases = (
+				985C61EFDD9D074C36F85A40 /* [CP] Check Pods Manifest.lock */,
 				052ED9371E6E6F9A0078ABCF /* Sources */,
 				052ED9381E6E6F9A0078ABCF /* Frameworks */,
 				052ED9391E6E6F9A0078ABCF /* Resources */,
+				2760DC78AF383CD4B11050D1 /* [CP] Embed Pods Frameworks */,
+				4884EC02023F69ADADCF1C8F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +308,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		110AC93E74B9E98B8DEC7A40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2760DC78AF383CD4B11050D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhaleUITests/Pods-WhaleUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4884EC02023F69ADADCF1C8F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhaleUITests/Pods-WhaleUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		985C61EFDD9D074C36F85A40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9D08219AC13144CCD41CFBF3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhaleTests/Pods-WhaleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE854569F57FD6F3339EBFE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Whale/Pods-Whale-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8A00AF922797D2DEF4F55D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF2BC5B7B3F61040BA34B5BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhaleTests/Pods-WhaleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA43908ACAF76AE86CDF57F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Whale/Pods-Whale-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		052ED9151E6E6F9A0078ABCF /* Sources */ = {
@@ -417,6 +604,7 @@
 		};
 		052ED9451E6E6F9A0078ABCF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05AB8956A2960E6ADFD4CFE1 /* Pods-Whale.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F7AL96RPTB;
@@ -430,6 +618,7 @@
 		};
 		052ED9461E6E6F9A0078ABCF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D0E6CA38C2842BC5D61680 /* Pods-Whale.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F7AL96RPTB;
@@ -443,6 +632,7 @@
 		};
 		052ED9481E6E6F9A0078ABCF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52E8DC4AC28B151038DA4C17 /* Pods-WhaleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -458,6 +648,7 @@
 		};
 		052ED9491E6E6F9A0078ABCF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B022750060D7B58461DF113 /* Pods-WhaleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -473,6 +664,7 @@
 		};
 		052ED94B1E6E6F9A0078ABCF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2FAE584ED896EB1DE72DBB8 /* Pods-WhaleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = F7AL96RPTB;
@@ -487,6 +679,7 @@
 		};
 		052ED94C1E6E6F9A0078ABCF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFE6BFB1C6A0970F90407DC7 /* Pods-WhaleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = F7AL96RPTB;
