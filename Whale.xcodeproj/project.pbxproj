@@ -17,11 +17,18 @@
 		052BD2161E6E9B170037287A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052BD2151E6E9B170037287A /* Search.storyboard */; };
 		052BD2181E6E9B230037287A /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052BD2171E6E9B230037287A /* Activity.storyboard */; };
 		052BD21A1E6E9B2E0037287A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052BD2191E6E9B2E0037287A /* Profile.storyboard */; };
+		052BD2241E6EA7110037287A /* CoreApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BD2231E6EA7110037287A /* CoreApiClient.swift */; };
+		052BD2261E6EAB390037287A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BD2251E6EAB390037287A /* Networking.swift */; };
 		052ED91D1E6E6F9A0078ABCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ED91C1E6E6F9A0078ABCF /* AppDelegate.swift */; };
 		052ED9221E6E6F9A0078ABCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052ED9201E6E6F9A0078ABCF /* Main.storyboard */; };
 		052ED9251E6E6F9A0078ABCF /* Whale.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 052ED9231E6E6F9A0078ABCF /* Whale.xcdatamodeld */; };
 		052ED9271E6E6F9A0078ABCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052ED9261E6E6F9A0078ABCF /* Assets.xcassets */; };
 		052ED92A1E6E6F9A0078ABCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052ED9281E6E6F9A0078ABCF /* LaunchScreen.storyboard */; };
+		05634E821E6F5B6E00116D47 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */; };
+		05634E831E6F5B6E00116D47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */; };
+		05634E841E6F5B6E00116D47 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */; };
+		05634E851E6F5B6E00116D47 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E811E6F5B6E00116D47 /* SearchViewController.swift */; };
+		05634E871E6F5CAE00116D47 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05634E861E6F5CAE00116D47 /* Authentication.storyboard */; };
 		4E33CA33CDDF701186237457 /* Pods_WhaleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66C8A5FFD48505EC281639C /* Pods_WhaleTests.framework */; };
 		9E6293790283056F58A49429 /* Pods_Whale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A099EF1F1F64FF0550E99A6 /* Pods_Whale.framework */; };
 		DBBBB3F9655A95870E6A9165 /* Pods_WhaleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E515BE67A9DA459B05FB5C /* Pods_WhaleUITests.framework */; };
@@ -55,6 +62,8 @@
 		052BD2151E6E9B170037287A /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		052BD2171E6E9B230037287A /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		052BD2191E6E9B2E0037287A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		052BD2231E6EA7110037287A /* CoreApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreApiClient.swift; sourceTree = "<group>"; };
+		052BD2251E6EAB390037287A /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		052ED9191E6E6F9A0078ABCF /* Whale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		052ED91C1E6E6F9A0078ABCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		052ED9211E6E6F9A0078ABCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +75,11 @@
 		052ED9361E6E6F9A0078ABCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		052ED93B1E6E6F9A0078ABCF /* WhaleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhaleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		052ED9411E6E6F9A0078ABCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		05634E811E6F5B6E00116D47 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		05634E861E6F5CAE00116D47 /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		05AB8956A2960E6ADFD4CFE1 /* Pods-Whale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Whale/Pods-Whale.debug.xcconfig"; sourceTree = "<group>"; };
 		0A099EF1F1F64FF0550E99A6 /* Pods_Whale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B022750060D7B58461DF113 /* Pods-WhaleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhaleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhaleTests/Pods-WhaleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +131,8 @@
 		052BD2001E6E914C0037287A /* APIClients */ = {
 			isa = PBXGroup;
 			children = (
+				052BD2231E6EA7110037287A /* CoreApiClient.swift */,
+				052BD2251E6EAB390037287A /* Networking.swift */,
 			);
 			path = APIClients;
 			sourceTree = "<group>";
@@ -137,8 +153,7 @@
 			children = (
 				052BD20B1E6E97500037287A /* Cells */,
 				052BD20C1E6E97500037287A /* Storyboards */,
-				052BD20D1E6E97500037287A /* ViewControllers */,
-				052BD20E1E6E97500037287A /* Views */,
+				05634E791E6F5B1B00116D47 /* Scenes */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -159,22 +174,9 @@
 				052BD2151E6E9B170037287A /* Search.storyboard */,
 				052BD2171E6E9B230037287A /* Activity.storyboard */,
 				052BD2191E6E9B2E0037287A /* Profile.storyboard */,
+				05634E861E6F5CAE00116D47 /* Authentication.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		052BD20D1E6E97500037287A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		052BD20E1E6E97500037287A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		052ED9101E6E6F990078ABCF = {
@@ -228,6 +230,49 @@
 				052ED9411E6E6F9A0078ABCF /* Info.plist */,
 			);
 			path = WhaleUITests;
+			sourceTree = "<group>";
+		};
+		05634E791E6F5B1B00116D47 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				05634E7A1E6F5B6E00116D47 /* Activity */,
+				05634E7C1E6F5B6E00116D47 /* Home */,
+				05634E7E1E6F5B6E00116D47 /* Profile */,
+				05634E801E6F5B6E00116D47 /* Search */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		05634E7A1E6F5B6E00116D47 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		05634E7C1E6F5B6E00116D47 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		05634E7E1E6F5B6E00116D47 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		05634E801E6F5B6E00116D47 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				05634E811E6F5B6E00116D47 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		3B793E7E611F2C227B29AAD3 /* Pods */ = {
@@ -378,6 +423,7 @@
 				052ED9271E6E6F9A0078ABCF /* Assets.xcassets in Resources */,
 				052ED9221E6E6F9A0078ABCF /* Main.storyboard in Resources */,
 				052BD2181E6E9B230037287A /* Activity.storyboard in Resources */,
+				05634E871E6F5CAE00116D47 /* Authentication.storyboard in Resources */,
 				052BD2161E6E9B170037287A /* Search.storyboard in Resources */,
 				052BD2121E6E97CE0037287A /* AnswerCell.xib in Resources */,
 			);
@@ -542,12 +588,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052BD2241E6EA7110037287A /* CoreApiClient.swift in Sources */,
 				052BD2031E6E91AB0037287A /* User.swift in Sources */,
 				052BD2051E6E936D0037287A /* Answer.swift in Sources */,
+				05634E851E6F5B6E00116D47 /* SearchViewController.swift in Sources */,
+				052BD2261E6EAB390037287A /* Networking.swift in Sources */,
 				052BD2091E6E93850037287A /* Comment.swift in Sources */,
+				05634E831E6F5B6E00116D47 /* HomeViewController.swift in Sources */,
+				05634E841E6F5B6E00116D47 /* ProfileViewController.swift in Sources */,
 				052BD2071E6E93740037287A /* Question.swift in Sources */,
 				052BD2111E6E97CE0037287A /* AnswerCell.swift in Sources */,
 				052ED91D1E6E6F9A0078ABCF /* AppDelegate.swift in Sources */,
+				05634E821E6F5B6E00116D47 /* ActivityViewController.swift in Sources */,
 				052ED9251E6E6F9A0078ABCF /* Whale.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
