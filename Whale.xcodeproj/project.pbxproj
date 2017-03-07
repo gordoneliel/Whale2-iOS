@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052BD2031E6E91AB0037287A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BD2021E6E91AB0037287A /* User.swift */; };
+		052BD2051E6E936D0037287A /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BD2041E6E936D0037287A /* Answer.swift */; };
+		052BD2071E6E93740037287A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BD2061E6E93740037287A /* Question.swift */; };
+		052BD2091E6E93850037287A /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BD2081E6E93850037287A /* Comment.swift */; };
 		052ED91D1E6E6F9A0078ABCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ED91C1E6E6F9A0078ABCF /* AppDelegate.swift */; };
-		052ED91F1E6E6F9A0078ABCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ED91E1E6E6F9A0078ABCF /* ViewController.swift */; };
 		052ED9221E6E6F9A0078ABCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052ED9201E6E6F9A0078ABCF /* Main.storyboard */; };
 		052ED9251E6E6F9A0078ABCF /* Whale.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 052ED9231E6E6F9A0078ABCF /* Whale.xcdatamodeld */; };
 		052ED9271E6E6F9A0078ABCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052ED9261E6E6F9A0078ABCF /* Assets.xcassets */; };
@@ -38,11 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052BD2021E6E91AB0037287A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		052BD2041E6E936D0037287A /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		052BD2061E6E93740037287A /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		052BD2081E6E93850037287A /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		052ED9191E6E6F9A0078ABCF /* Whale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		052ED91C1E6E6F9A0078ABCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		052ED91E1E6E6F9A0078ABCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		052ED9211E6E6F9A0078ABCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		052ED9241E6E6F9A0078ABCF /* Whale.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Whale.xcdatamodel; sourceTree = "<group>"; };
+		052ED9241E6E6F9A0078ABCF /* Whale.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = Whale.xcdatamodel; sourceTree = "<group>"; };
 		052ED9261E6E6F9A0078ABCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		052ED9291E6E6F9A0078ABCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		052ED92B1E6E6F9A0078ABCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +97,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		052BD1FF1E6E914C0037287A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				052BD2001E6E914C0037287A /* APIClients */,
+				052BD2011E6E914C0037287A /* Models */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		052BD2001E6E914C0037287A /* APIClients */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIClients;
+			sourceTree = "<group>";
+		};
+		052BD2011E6E914C0037287A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				052BD2021E6E91AB0037287A /* User.swift */,
+				052BD2041E6E936D0037287A /* Answer.swift */,
+				052BD2061E6E93740037287A /* Question.swift */,
+				052BD2081E6E93850037287A /* Comment.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		052ED9101E6E6F990078ABCF = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +149,8 @@
 		052ED91B1E6E6F9A0078ABCF /* Whale */ = {
 			isa = PBXGroup;
 			children = (
+				052BD1FF1E6E914C0037287A /* Networking */,
 				052ED91C1E6E6F9A0078ABCF /* AppDelegate.swift */,
-				052ED91E1E6E6F9A0078ABCF /* ViewController.swift */,
 				052ED9201E6E6F9A0078ABCF /* Main.storyboard */,
 				052ED9261E6E6F9A0078ABCF /* Assets.xcassets */,
 				052ED9281E6E6F9A0078ABCF /* LaunchScreen.storyboard */,
@@ -452,7 +485,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				052ED91F1E6E6F9A0078ABCF /* ViewController.swift in Sources */,
+				052BD2031E6E91AB0037287A /* User.swift in Sources */,
+				052BD2051E6E936D0037287A /* Answer.swift in Sources */,
+				052BD2091E6E93850037287A /* Comment.swift in Sources */,
+				052BD2071E6E93740037287A /* Question.swift in Sources */,
 				052ED91D1E6E6F9A0078ABCF /* AppDelegate.swift in Sources */,
 				052ED9251E6E6F9A0078ABCF /* Whale.xcdatamodeld in Sources */,
 			);
@@ -711,6 +747,7 @@
 				052ED9461E6E6F9A0078ABCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		052ED9471E6E6F9A0078ABCF /* Build configuration list for PBXNativeTarget "WhaleTests" */ = {
 			isa = XCConfigurationList;
@@ -719,6 +756,7 @@
 				052ED9491E6E6F9A0078ABCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		052ED94A1E6E6F9A0078ABCF /* Build configuration list for PBXNativeTarget "WhaleUITests" */ = {
 			isa = XCConfigurationList;
@@ -727,6 +765,7 @@
 				052ED94C1E6E6F9A0078ABCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
