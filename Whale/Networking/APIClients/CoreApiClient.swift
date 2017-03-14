@@ -20,36 +20,41 @@ enum CoreApiClient {
         password: String
     )
     case updateUser(firstName: String, lastName: String, phone: String, data: Data?)
+    case users(page: Int, pageSize: Int)
 //    case followUser(userId: Int)
 //    case unfollowUser(userId: Int)
     
-//    case answers(page: Int, pageSize: Int)
-//    case comments(answerId: Int, page: Int, pageSize: Int)
+    case answers(page: Int, pageSize: Int)
+    case comments(answerId: Int, page: Int, pageSize: Int)
     
 }
 
 extension CoreApiClient: TargetType {
-    var base: String { return "https://someapp.herokuapp.com/api/" }
+    var base: String { return "https://whale2-elixir.herokuapp.com/api/" }
     var baseURL: URL { return URL(string: base)! }
     
     var path: String {
         switch self {
         case .me:
-            return "v1/users"
+            return "v1/sessions"
         case .authenticateUser:
             return "v1/sessions"
         case .createUser:
             return "v1/users"
         case .updateUser:
             return "v1/users"
+        case .users:
+            return "v1/users"
+        case .answers:
+            return "v1/answers"
+        case let .comments(answerId, _, _):
+            return "v1/answers/\(answerId)/comments"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .me:
-            return .get
-        case .authenticateUser:
+        case .me, .users, .authenticateUser, .answers, .comments:
             return .get
         case .createUser:
             return .post
@@ -68,6 +73,13 @@ extension CoreApiClient: TargetType {
             return [:]
         case .updateUser:
             return [:]
+        case let .users(page, perPage),
+             let .answers(page, perPage),
+             let .comments(_, page, perPage):
+            return [
+                "per_page": perPage,
+                "page": page
+            ]
         }
     }
     
@@ -89,6 +101,12 @@ extension CoreApiClient: TargetType {
             return stubbedResponse("user")
         case .updateUser:
             return stubbedResponse("user")
+        case .users:
+            return stubbedResponse("all_users")
+        case .answers:
+            return stubbedResponse("answers")
+        case .comments:
+            return stubbedResponse("comments")
         }
     }
 }

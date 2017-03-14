@@ -12,7 +12,7 @@
         <!--Search View Controller-->
         <scene sceneID="dhF-RG-Suz">
             <objects>
-                <viewController storyboardIdentifier="SearchVC" id="esn-cQ-UJL" customClass="SearchViewController" customModule="Whale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="esn-cQ-UJL" customClass="SearchViewController" customModule="Whale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dDr-fR-jFv"/>
                         <viewControllerLayoutGuide type="bottom" id="Xju-ht-N8R"/>

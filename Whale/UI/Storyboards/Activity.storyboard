@@ -12,7 +12,7 @@
         <!--Activity View Controller-->
         <scene sceneID="w8l-pJ-L0v">
             <objects>
-                <viewController storyboardIdentifier="ActivityVC" id="n34-mC-TOE" customClass="ActivityViewController" customModule="Whale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityViewController" id="n34-mC-TOE" customClass="ActivityViewController" customModule="Whale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ohl-WE-oqc"/>
                         <viewControllerLayoutGuide type="bottom" id="E9z-ef-kBN"/>

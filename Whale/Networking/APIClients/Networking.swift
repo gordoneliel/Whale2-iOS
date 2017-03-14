@@ -18,6 +18,12 @@ struct BaseNetworking: NetworkingType {
     let provider: MoyaProvider<T>
 }
 
+extension BaseNetworking {
+    func request(_ token: T, completion: @escaping Completion) {
+        self.provider.request(token, completion: completion)
+    }
+}
+
 extension NetworkingType {
     static func endpointsClosure<T>(_ target: T) -> Endpoint<T> where T: TargetType {
         let endpoint: Endpoint<T> = Endpoint<T>(
@@ -26,7 +32,7 @@ extension NetworkingType {
             method: target.method,
             parameters: target.parameters,
             parameterEncoding: URLEncoding.default,
-            httpHeaderFields: [:]
+            httpHeaderFields: ["Authorization": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJVc2VyOjEiLCJleHAiOjE0OTE1NTU2OTQsImlhdCI6MTQ4ODk2MzY5NCwiaXNzIjoiV2hhbGUyIiwianRpIjoiYWQ5MDFlMjEtZWJhNC00YzdkLWJiYWUtMWVmMTEyOWExNzNhIiwicGVtIjp7fSwic3ViIjoiVXNlcjoxIiwidHlwIjoiYWNjZXNzIn0._3YO2mx0O-EqiRvkl7-OlB3oU5aXqwL4CQD5DZMKyva9gYFQ_6_a2xP9uonw25mcAQCDAid8_zOSfzW5EaoZ2A"]
         )
         
         return endpoint
