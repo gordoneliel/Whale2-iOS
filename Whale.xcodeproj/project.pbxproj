@@ -35,6 +35,7 @@
 		054B5D251E7089EE00E7EE4D /* Moya+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B5D241E7089EE00E7EE4D /* Moya+Extensions.swift */; };
 		055C01521E78502600EDE252 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01511E78502600EDE252 /* User.swift */; };
 		055C01541E78503800EDE252 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01531E78503800EDE252 /* User+CoreDataProperties.swift */; };
+		055C01571E78903800EDE252 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01561E78903800EDE252 /* PaginationViewModel.swift */; };
 		05634E821E6F5B6E00116D47 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */; };
 		05634E831E6F5B6E00116D47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */; };
 		05634E841E6F5B6E00116D47 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */; };
@@ -128,6 +129,7 @@
 		054B5D241E7089EE00E7EE4D /* Moya+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya+Extensions.swift"; sourceTree = "<group>"; };
 		055C01511E78502600EDE252 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		055C01531E78503800EDE252 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		055C01561E78903800EDE252 /* PaginationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModel.swift; sourceTree = "<group>"; };
 		05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		052BD20A1E6E97500037287A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				055C01551E788FEB00EDE252 /* ViewModel+Extensions */,
 				0563DF961E763FD600184D5E /* Designables */,
 				050A0D7F1E71ED9D00A5659F /* Layout */,
 				052BD20B1E6E97500037287A /* Cells */,
@@ -361,6 +364,14 @@
 				054B5D241E7089EE00E7EE4D /* Moya+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		055C01551E788FEB00EDE252 /* ViewModel+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				055C01561E78903800EDE252 /* PaginationViewModel.swift */,
+			);
+			path = "ViewModel+Extensions";
 			sourceTree = "<group>";
 		};
 		05634E791E6F5B1B00116D47 /* Scenes */ = {
@@ -845,6 +856,7 @@
 				050A0D711E71D08A00A5659F /* HomeViewModel.swift in Sources */,
 				050A0D731E71D0B600A5659F /* HomeOperation.swift in Sources */,
 				050A0D831E71F80000A5659F /* VideoPlayerView.swift in Sources */,
+				055C01571E78903800EDE252 /* PaginationViewModel.swift in Sources */,
 				0563DF981E763FE500184D5E /* DesignableButton.swift in Sources */,
 				05634E951E6F92AE00116D47 /* CoreDataClient.swift in Sources */,
 				0563DF9F1E767A7400184D5E /* CommentViewController.swift in Sources */,

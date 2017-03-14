@@ -61,16 +61,12 @@ class HomeViewModel: ViewModelType {
     
     let title = "Answers"
     
-    let downloadQueue = OperationQueue()
+    var pagination: PaginationViewModel<JSONAnswer>
+    
     var paginationState: PaginationState = .loading(page: 0, pageSize: 3)
     
     init() {
-        // Our download queue is a synchronous one,
-        // that allows us to wait for a page to
-        // complete downloading before kicking off another request
-        // when scrolled to bottom or top
-        downloadQueue.qualityOfService = .userInitiated
-        downloadQueue.maxConcurrentOperationCount = 1
+        pagination = PaginationViewModel<JSONAnswer>(page: 0, pageSize: 3)
         
         // DataSource
         dataSource.configureCell = { (dataSource, cv, indexPath, cellItem) in
@@ -109,30 +105,24 @@ class HomeViewModel: ViewModelType {
             page: pageState.paginationValue().page,
             pageSize: pageState.paginationValue().pageSize
         )
-        
-        let downloadOp = DownloadOperation<JSONAnswer>(
-            page: pageState.paginationValue().page,
-            pageSize: pageState.paginationValue().pageSize,
-            apiClient: newRequest
-        )
-        
-        downloadQueue.addOperation(downloadOp)
-        
-        downloadOp.completionBlock = { [weak self] in
+
+        pagination.paginate(request: newRequest) { [unowned
+            self] in
             defer {
                 DispatchQueue.main.async {
-                    self?.delegate?.didCompleteLoading()
-                    self?.paginationState = .nextIdle(
-                        page: downloadOp.currentPage,
-                        pageSize: downloadOp.pageSize
+                    self.delegate?.didCompleteLoading()
+                    self.paginationState = .nextIdle(
+                        page: self.pagination.currentPage,
+                        pageSize: self.pagination.pageSize
                     )
-                    if downloadOp.isFinalPage {
-                        self?.paginationState = .loadedAllPages
+                    if self.pagination.isFinalPage {
+                        self.paginationState = .loadedAllPages
                     }
                 }
             }
             
-            guard let answers = downloadOp.pageData?.data else {return}
+            guard let answers = self.pagination.pageData?.data else {return}
+            
             guard !answers.isEmpty else {return}
             
             let items = answers.map { answer in
@@ -148,10 +138,10 @@ class HomeViewModel: ViewModelType {
                 )
             }
             
-            self?.answers = items
-            guard let existing = self?.dataSource.sectionModels.first else {
+            self.answers = items
+            guard let existing = self.dataSource.sectionModels.first else {
                 let section = HomeSectionModel.answers(title: "Answers", items: items)
-                self?.dataSource.setSections([section])
+                self.dataSource.setSections([section])
                 return
             }
             
@@ -159,7 +149,7 @@ class HomeViewModel: ViewModelType {
             
             let newSection = HomeSectionModel.answers(title: "Answers", items: newCollection)
             
-            self?.dataSource.setSections([newSection])
+            self.dataSource.setSections([newSection])
         }
     }
     

@@ -19,7 +19,7 @@ class ListLayout: UICollectionViewFlowLayout {
         super.init(coder: aDecoder)
     }
     
-    convenience init(size: CGSize = CGSize(width: 300, height: 150), insets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 30, right: 0), headerSize: CGSize = CGSize(width: 0, height: 0)) {
+    convenience init(size: CGSize = CGSize(width: 300, height: 150), insets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0), headerSize: CGSize = CGSize(width: 0, height: 0)) {
         self.init()
         commonInit(size: size, insets: insets, headerSize: headerSize)
     }
