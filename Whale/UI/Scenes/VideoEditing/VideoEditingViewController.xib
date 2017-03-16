@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoEditingViewController" customModule="Whale" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraPreview" destination="vYY-oc-UHe" id="n4Y-wp-3C6"/>
+                <outlet property="editingSegmentsToolbar" destination="TFE-Iz-7CX" id="Kvh-8Y-Zdb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYY-oc-UHe" customClass="CameraVideoView" customModule="Whale" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuC-uk-aMO" customClass="RoundedButton" customModule="Whale" customModuleProvider="target">
+                            <rect key="frame" x="147.5" y="462" width="80" height="80"/>
+                            <color key="backgroundColor" red="0.74901960779999999" green="0.0" blue="0.40820895909999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="cax-Wn-Ij8"/>
+                                <constraint firstAttribute="width" secondItem="CuC-uk-aMO" secondAttribute="height" id="j7u-iu-2jQ"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="40"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="recordSegmentPressed:" destination="-1" eventType="touchUpInside" id="EbK-Ku-59w"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usA-1r-rNx">
+                            <rect key="frame" x="15" y="15" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Hj0-kv-MdQ"/>
+                                <constraint firstAttribute="width" secondItem="usA-1r-rNx" secondAttribute="height" id="X0l-MZ-Ovd"/>
+                            </constraints>
+                            <state key="normal" image="CloseButton"/>
+                            <connections>
+                                <action selector="dismissViewController:" destination="-1" eventType="touchUpInside" id="9Bt-ZN-cvY"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="usA-1r-rNx" firstAttribute="top" secondItem="vYY-oc-UHe" secondAttribute="top" constant="15" id="5Y5-0R-9B3"/>
+                        <constraint firstAttribute="bottom" secondItem="CuC-uk-aMO" secondAttribute="bottom" constant="25" id="6uH-Zr-zau"/>
+                        <constraint firstItem="usA-1r-rNx" firstAttribute="leading" secondItem="vYY-oc-UHe" secondAttribute="leading" constant="15" id="I78-i4-boI"/>
+                        <constraint firstItem="CuC-uk-aMO" firstAttribute="centerX" secondItem="vYY-oc-UHe" secondAttribute="centerX" id="wxT-fm-37C"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-Iz-7CX" customClass="VideoEditingToolbar" customModule="Whale" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="FB5-x1-jGr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.065957521079999998" green="0.06708616932" blue="0.068531411910000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="TFE-Iz-7CX" secondAttribute="trailing" id="9M0-Vi-sTV"/>
+                <constraint firstAttribute="bottom" secondItem="TFE-Iz-7CX" secondAttribute="bottom" id="DWS-S3-WbJ"/>
+                <constraint firstItem="TFE-Iz-7CX" firstAttribute="top" secondItem="vYY-oc-UHe" secondAttribute="bottom" id="Oda-IL-30z"/>
+                <constraint firstItem="TFE-Iz-7CX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="akT-Ni-JYb"/>
+                <constraint firstAttribute="trailing" secondItem="vYY-oc-UHe" secondAttribute="trailing" id="me8-Zf-fWG"/>
+                <constraint firstItem="vYY-oc-UHe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pk6-hr-say"/>
+                <constraint firstItem="vYY-oc-UHe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zBi-ke-uWz"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CloseButton" width="15" height="15"/>
+    </resources>
+</document>

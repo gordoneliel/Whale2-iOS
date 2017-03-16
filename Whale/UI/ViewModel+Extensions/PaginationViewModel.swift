@@ -58,7 +58,6 @@ class PaginationViewModel<T: Decodable> {
     var pageData: PageData<T>?
     let networking = BaseNetworking.newNetworking()
     var isFinalPage = false
-    let semphore = DispatchSemaphore(value: 1)
     var loading: Bool = false
     
     init(page: Int, pageSize: Int) {

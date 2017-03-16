@@ -71,6 +71,9 @@
                                                 <real key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="answerButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="acQ-nW-xie"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

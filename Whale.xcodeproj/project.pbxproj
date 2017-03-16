@@ -43,6 +43,14 @@
 		055C01661E79F22E00EDE252 /* ActivityQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01641E79F22E00EDE252 /* ActivityQuestionCell.swift */; };
 		055C01671E79F22E00EDE252 /* ActivityQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055C01651E79F22E00EDE252 /* ActivityQuestionCell.xib */; };
 		055C01691E7A486600EDE252 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01681E7A486600EDE252 /* RoundedButton.swift */; };
+		055C016D1E7A7F8F00EDE252 /* VideoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C016B1E7A7F8F00EDE252 /* VideoEditingViewController.swift */; };
+		055C016E1E7A7F8F00EDE252 /* VideoEditingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055C016C1E7A7F8F00EDE252 /* VideoEditingViewController.xib */; };
+		055C01701E7A7FFD00EDE252 /* VideoEditingToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C016F1E7A7FFD00EDE252 /* VideoEditingToolbar.swift */; };
+		055C01721E7A800B00EDE252 /* VideoEditingToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055C01711E7A800B00EDE252 /* VideoEditingToolbar.xib */; };
+		055C01741E7A808100EDE252 /* CameraVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01731E7A808100EDE252 /* CameraVideoView.swift */; };
+		055C01761E7A973700EDE252 /* VideoSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01751E7A973700EDE252 /* VideoSegment.swift */; };
+		055C01791E7AAADF00EDE252 /* VideoSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01771E7AAADF00EDE252 /* VideoSegmentCell.swift */; };
+		055C017A1E7AAADF00EDE252 /* VideoSegmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055C01781E7AAADF00EDE252 /* VideoSegmentCell.xib */; };
 		05634E821E6F5B6E00116D47 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */; };
 		05634E831E6F5B6E00116D47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */; };
 		05634E841E6F5B6E00116D47 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */; };
@@ -144,6 +152,14 @@
 		055C01641E79F22E00EDE252 /* ActivityQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityQuestionCell.swift; sourceTree = "<group>"; };
 		055C01651E79F22E00EDE252 /* ActivityQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityQuestionCell.xib; sourceTree = "<group>"; };
 		055C01681E7A486600EDE252 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		055C016B1E7A7F8F00EDE252 /* VideoEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoEditingViewController.swift; sourceTree = "<group>"; };
+		055C016C1E7A7F8F00EDE252 /* VideoEditingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoEditingViewController.xib; sourceTree = "<group>"; };
+		055C016F1E7A7FFD00EDE252 /* VideoEditingToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoEditingToolbar.swift; sourceTree = "<group>"; };
+		055C01711E7A800B00EDE252 /* VideoEditingToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoEditingToolbar.xib; sourceTree = "<group>"; };
+		055C01731E7A808100EDE252 /* CameraVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraVideoView.swift; sourceTree = "<group>"; };
+		055C01751E7A973700EDE252 /* VideoSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSegment.swift; sourceTree = "<group>"; };
+		055C01771E7AAADF00EDE252 /* VideoSegmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSegmentCell.swift; sourceTree = "<group>"; };
+		055C01781E7AAADF00EDE252 /* VideoSegmentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoSegmentCell.xib; sourceTree = "<group>"; };
 		05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +313,8 @@
 				055C01611E79F21D00EDE252 /* ActivityFollowCell.xib */,
 				055C01641E79F22E00EDE252 /* ActivityQuestionCell.swift */,
 				055C01651E79F22E00EDE252 /* ActivityQuestionCell.xib */,
+				055C01771E7AAADF00EDE252 /* VideoSegmentCell.swift */,
+				055C01781E7AAADF00EDE252 /* VideoSegmentCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -392,9 +410,23 @@
 			path = "ViewModel+Extensions";
 			sourceTree = "<group>";
 		};
+		055C016A1E7A7F2E00EDE252 /* VideoEditing */ = {
+			isa = PBXGroup;
+			children = (
+				055C016B1E7A7F8F00EDE252 /* VideoEditingViewController.swift */,
+				055C016C1E7A7F8F00EDE252 /* VideoEditingViewController.xib */,
+				055C016F1E7A7FFD00EDE252 /* VideoEditingToolbar.swift */,
+				055C01711E7A800B00EDE252 /* VideoEditingToolbar.xib */,
+				055C01731E7A808100EDE252 /* CameraVideoView.swift */,
+				055C01751E7A973700EDE252 /* VideoSegment.swift */,
+			);
+			path = VideoEditing;
+			sourceTree = "<group>";
+		};
 		05634E791E6F5B1B00116D47 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				055C016A1E7A7F2E00EDE252 /* VideoEditing */,
 				0563DF9D1E767A6000184D5E /* Comment */,
 				05F41A351E752F36002E838F /* TabBar */,
 				050A0D761E71E16200A5659F /* VideoPlayer */,
@@ -683,8 +715,11 @@
 				052ED92A1E6E6F9A0078ABCF /* LaunchScreen.storyboard in Resources */,
 				052BD2141E6E9B060037287A /* Home.storyboard in Resources */,
 				05F41A341E74720A002E838F /* UserProfileCell.xib in Resources */,
+				055C017A1E7AAADF00EDE252 /* VideoSegmentCell.xib in Resources */,
+				055C016E1E7A7F8F00EDE252 /* VideoEditingViewController.xib in Resources */,
 				0563DFA31E767BB300184D5E /* CommentCell.xib in Resources */,
 				052BD21A1E6E9B2E0037287A /* Profile.storyboard in Resources */,
+				055C01721E7A800B00EDE252 /* VideoEditingToolbar.xib in Resources */,
 				05F41A411E754E29002E838F /* GenericHeaderCell.xib in Resources */,
 				052ED9271E6E6F9A0078ABCF /* Assets.xcassets in Resources */,
 				052ED9221E6E6F9A0078ABCF /* Main.storyboard in Resources */,
@@ -890,15 +925,20 @@
 				05F41A3B1E753574002E838F /* Storyboard.swift in Sources */,
 				05634E831E6F5B6E00116D47 /* HomeViewController.swift in Sources */,
 				05634E8B1E6F87A600116D47 /* CoreDataStack.swift in Sources */,
+				055C01701E7A7FFD00EDE252 /* VideoEditingToolbar.swift in Sources */,
+				055C01761E7A973700EDE252 /* VideoSegment.swift in Sources */,
 				05634E931E6F8F3300116D47 /* NSManagedObject+Extensions.swift in Sources */,
 				05634E841E6F5B6E00116D47 /* ProfileViewController.swift in Sources */,
 				0563DF951E763B5800184D5E /* ProfileSectionModel.swift in Sources */,
+				055C01741E7A808100EDE252 /* CameraVideoView.swift in Sources */,
 				05FD75121E6FEEA4005B3715 /* Question+CoreDataProperties.swift in Sources */,
 				052BD2071E6E93740037287A /* JSONQuestion.swift in Sources */,
+				055C01791E7AAADF00EDE252 /* VideoSegmentCell.swift in Sources */,
 				052BD2111E6E97CE0037287A /* AnswerCell.swift in Sources */,
 				0563DFA21E767BB300184D5E /* CommentCell.swift in Sources */,
 				059EDD3E1E7132BE0042B621 /* NibLoadable.swift in Sources */,
 				05F41A401E754E29002E838F /* GenericHeaderCell.swift in Sources */,
+				055C016D1E7A7F8F00EDE252 /* VideoEditingViewController.swift in Sources */,
 				05F41A451E762374002E838F /* UserProfileCellViewModel.swift in Sources */,
 				054B5D251E7089EE00E7EE4D /* Moya+Extensions.swift in Sources */,
 				050A0D781E71E17400A5659F /* VideoPlayerViewController.swift in Sources */,

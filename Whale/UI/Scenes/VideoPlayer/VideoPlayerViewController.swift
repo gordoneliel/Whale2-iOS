@@ -72,7 +72,9 @@ class VideoPlayerViewController: UIViewController {
         show(commentVC, sender: self)
     }
     
-    
+    @IBAction func unwindToVideoPlayerView(segue: UIStoryboardSegue) {
+        segue.source.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension VideoPlayerViewController: VideoPlayerDelegate {

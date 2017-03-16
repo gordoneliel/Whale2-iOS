@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol AnswerCellDelegate: class {
+    func didTapAnswer()
+}
+
 class ActivityQuestionCell: UICollectionViewCell {
 
     @IBOutlet weak var questionUserCategory: UILabel!
     @IBOutlet weak var questionUserName: UILabel!
     @IBOutlet weak var questionUserImageView: CircularImageView!
     @IBOutlet weak var question: UILabel!
+    weak var delegate: AnswerCellDelegate?
     
     var viewModel: SectionItem? {
         didSet {
@@ -43,6 +48,10 @@ class ActivityQuestionCell: UICollectionViewCell {
             self.frame = attr.frame
             
             return attr
+    }
+    
+    @IBAction func answerButtonTapped(_ sender: UIButton) {
+        delegate?.didTapAnswer()
     }
     
     override func awakeFromNib() {

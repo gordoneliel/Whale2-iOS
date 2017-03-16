@@ -13,6 +13,7 @@ import Moya
 class ActivityViewModel {
     let dataSource = SectionedDataSource<ActivitySectionModel>()
     weak var delegate: ViewModelDidComplete?
+    weak var activityViewController: ActivityViewController?
     
     init() {
         
@@ -77,11 +78,14 @@ class ActivityViewModel {
                 let item = items[indexPath.row]
                 let cell = cv.dequeueReusableCell(forIndexPath: indexPath) as ActivityFollowCell
                 cell.viewModel = item
+
                 return cell
             case let.question(_, items):
                 let item = items[indexPath.row]
                 let cell = cv.dequeueReusableCell(forIndexPath: indexPath) as ActivityQuestionCell
                 cell.viewModel = item
+                cell.delegate = self.activityViewController
+                
                 return cell
             }
         }

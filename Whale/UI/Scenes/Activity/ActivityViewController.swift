@@ -16,6 +16,9 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityViewModel.activityViewController = self
+        
         skinCollectionView()
     }
     
@@ -50,6 +53,14 @@ class ActivityViewController: UIViewController {
         
         collectionView.dataSource = activityViewModel.dataSource
         activityViewModel.delegate = self
+    }
+}
+
+extension ActivityViewController: AnswerCellDelegate {
+    func didTapAnswer() {
+        let videoEditor = VideoEditingViewController(nibName: VideoEditingViewController.storyboardIdentifier, bundle: nil)
+        
+        self.present(videoEditor, animated: true, completion: nil)
     }
 }
 
