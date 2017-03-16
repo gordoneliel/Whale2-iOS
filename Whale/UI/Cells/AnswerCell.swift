@@ -10,8 +10,11 @@ import UIKit
 import Kingfisher
 
 class AnswerCell: UICollectionViewCell {
+    
+    @IBOutlet weak var commentCount: UILabel!
     @IBOutlet weak var questionContent: UILabel!
 
+    @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var questionSenderImageView: UIImageView!
 
     @IBOutlet weak var videoThumbnailImageView: UIImageView!
@@ -27,6 +30,8 @@ class AnswerCell: UICollectionViewCell {
             videoThumbnailImageView.kf.setImage(with: answerCellViewModel?.thumbnailURL)
             questionSenderImageView.kf.setImage(with: answerCellViewModel?.questionUserImageURL)
             answerUserImageView.kf.setImage(with: answerCellViewModel?.answerUserImageURL)
+            likeCount.text = answerCellViewModel?.likeCount
+            commentCount.text = answerCellViewModel?.commentCount
         }
     }
     

@@ -18,6 +18,8 @@ class WhaleTabBarController: UITabBarController {
         self.viewControllers = tabBarViewModel
             .scenes
             .map{$0.viewController()}
+        
+        self.tabBar.tintColor = UIColor(red: 0/255, green: 167/255, blue: 255/255, alpha: 1)
     }
 }
 

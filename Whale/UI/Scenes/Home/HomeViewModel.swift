@@ -9,48 +9,7 @@
 import Foundation
 import Gloss
 
-enum PaginationState {
-    case nextIdle(page: Int, pageSize: Int)
-    case loadedAllPages
-    case loading(page: Int, pageSize: Int)
-}
 
-extension PaginationState {
-    func paginationValue() -> (page: Int, pageSize: Int) {
-        switch self {
-        case let .nextIdle(page, pageSize), let .loading(page, pageSize):
-            return (page, pageSize)
-        default:
-            return (0, 0)
-        }
-    }
-    
-    func next() -> PaginationState {
-        switch self {
-        case let .nextIdle(page, pageSize):
-            return .loading(page: page, pageSize: pageSize)
-        case let .loading(page, pageSize):
-            return .nextIdle(page: page, pageSize: pageSize)
-        default:
-            return .loadedAllPages
-        }
-    }
-}
-
-extension PaginationState: Equatable {}
-
-func ==(lhs: PaginationState, rhs: PaginationState) -> Bool {
-    switch (lhs, rhs) {
-    case (.nextIdle(_, _), .nextIdle(_, _)):
-        return true
-    case (.loading(_, _), .loading(_, _)):
-        return true
-    case (.loadedAllPages, .loadedAllPages):
-        return true
-    default:
-        return false
-    }
-}
 
 class HomeViewModel: ViewModelType {
     let dataSource = SectionedDataSource<HomeSectionModel>()
@@ -62,7 +21,6 @@ class HomeViewModel: ViewModelType {
     let title = "Answers"
     
     var pagination: PaginationViewModel<JSONAnswer>
-    
     var paginationState: PaginationState = .loading(page: 0, pageSize: 3)
     
     init() {
@@ -89,7 +47,7 @@ class HomeViewModel: ViewModelType {
             case (.answers, UICollectionElementKindSectionHeader):
                 let header = cv.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, forIndexPath: indexPath) as GenericHeaderCell
                 
-                header.headerLabel.text = "Answers"
+                header.headerLabel.text = "Latest Answers"
                 return header
             default:
                 return UICollectionViewCell()
@@ -105,20 +63,19 @@ class HomeViewModel: ViewModelType {
             page: pageState.paginationValue().page,
             pageSize: pageState.paginationValue().pageSize
         )
-
+        
         pagination.paginate(request: newRequest) { [unowned
             self] in
             defer {
-                DispatchQueue.main.async {
-                    self.delegate?.didCompleteLoading()
-                    self.paginationState = .nextIdle(
-                        page: self.pagination.currentPage,
-                        pageSize: self.pagination.pageSize
-                    )
-                    if self.pagination.isFinalPage {
-                        self.paginationState = .loadedAllPages
-                    }
+                self.delegate?.didCompleteLoading()
+                self.paginationState = .nextIdle(
+                    page: self.pagination.currentPage,
+                    pageSize: self.pagination.pageSize
+                )
+                if self.pagination.isFinalPage {
+                    self.paginationState = .loadedAllPages
                 }
+                
             }
             
             guard let answers = self.pagination.pageData?.data else {return}
@@ -134,7 +91,9 @@ class HomeViewModel: ViewModelType {
                     answerUserName: "\(answer.question.receiver.firstName) \(answer.question.receiver.lastName)",
                     questionUserImageURL: answer.question.sender.profileImageUrl,
                     answerUserImageURL: answer.question.receiver.profileImageUrl,
-                    answerId: answer.id
+                    answerId: answer.id,
+                    likeCount: "\(answer.likesCount)",
+                    commentCount: "\(answer.commentsCount)"
                 )
             }
             

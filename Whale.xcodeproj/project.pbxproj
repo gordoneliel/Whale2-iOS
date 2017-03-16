@@ -36,6 +36,13 @@
 		055C01521E78502600EDE252 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01511E78502600EDE252 /* User.swift */; };
 		055C01541E78503800EDE252 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01531E78503800EDE252 /* User+CoreDataProperties.swift */; };
 		055C01571E78903800EDE252 /* PaginationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01561E78903800EDE252 /* PaginationViewModel.swift */; };
+		055C015D1E79EDB400EDE252 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C015C1E79EDB400EDE252 /* ActivityViewModel.swift */; };
+		055C015F1E79EDC300EDE252 /* ActivitySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C015E1E79EDC300EDE252 /* ActivitySectionModel.swift */; };
+		055C01621E79F21D00EDE252 /* ActivityFollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01601E79F21D00EDE252 /* ActivityFollowCell.swift */; };
+		055C01631E79F21D00EDE252 /* ActivityFollowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055C01611E79F21D00EDE252 /* ActivityFollowCell.xib */; };
+		055C01661E79F22E00EDE252 /* ActivityQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01641E79F22E00EDE252 /* ActivityQuestionCell.swift */; };
+		055C01671E79F22E00EDE252 /* ActivityQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055C01651E79F22E00EDE252 /* ActivityQuestionCell.xib */; };
+		055C01691E7A486600EDE252 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055C01681E7A486600EDE252 /* RoundedButton.swift */; };
 		05634E821E6F5B6E00116D47 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */; };
 		05634E831E6F5B6E00116D47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */; };
 		05634E841E6F5B6E00116D47 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */; };
@@ -130,6 +137,13 @@
 		055C01511E78502600EDE252 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		055C01531E78503800EDE252 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		055C01561E78903800EDE252 /* PaginationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationViewModel.swift; sourceTree = "<group>"; };
+		055C015C1E79EDB400EDE252 /* ActivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		055C015E1E79EDC300EDE252 /* ActivitySectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySectionModel.swift; sourceTree = "<group>"; };
+		055C01601E79F21D00EDE252 /* ActivityFollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFollowCell.swift; sourceTree = "<group>"; };
+		055C01611E79F21D00EDE252 /* ActivityFollowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityFollowCell.xib; sourceTree = "<group>"; };
+		055C01641E79F22E00EDE252 /* ActivityQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityQuestionCell.swift; sourceTree = "<group>"; };
+		055C01651E79F22E00EDE252 /* ActivityQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityQuestionCell.xib; sourceTree = "<group>"; };
+		055C01681E7A486600EDE252 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		05634E7D1E6F5B6E00116D47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		05634E7F1E6F5B6E00116D47 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +293,10 @@
 				05F41A3F1E754E29002E838F /* GenericHeaderCell.xib */,
 				0563DFA01E767BB300184D5E /* CommentCell.swift */,
 				0563DFA11E767BB300184D5E /* CommentCell.xib */,
+				055C01601E79F21D00EDE252 /* ActivityFollowCell.swift */,
+				055C01611E79F21D00EDE252 /* ActivityFollowCell.xib */,
+				055C01641E79F22E00EDE252 /* ActivityQuestionCell.swift */,
+				055C01651E79F22E00EDE252 /* ActivityQuestionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -392,6 +410,8 @@
 			isa = PBXGroup;
 			children = (
 				05634E7B1E6F5B6E00116D47 /* ActivityViewController.swift */,
+				055C015C1E79EDB400EDE252 /* ActivityViewModel.swift */,
+				055C015E1E79EDC300EDE252 /* ActivitySectionModel.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -472,6 +492,7 @@
 			children = (
 				0563DF971E763FE500184D5E /* DesignableButton.swift */,
 				0563DF991E76422600184D5E /* CircularImageView.swift */,
+				055C01681E7A486600EDE252 /* RoundedButton.swift */,
 			);
 			path = Designables;
 			sourceTree = "<group>";
@@ -668,6 +689,8 @@
 				052ED9271E6E6F9A0078ABCF /* Assets.xcassets in Resources */,
 				052ED9221E6E6F9A0078ABCF /* Main.storyboard in Resources */,
 				052BD2181E6E9B230037287A /* Activity.storyboard in Resources */,
+				055C01631E79F21D00EDE252 /* ActivityFollowCell.xib in Resources */,
+				055C01671E79F22E00EDE252 /* ActivityQuestionCell.xib in Resources */,
 				05634E871E6F5CAE00116D47 /* Authentication.storyboard in Resources */,
 				052BD2161E6E9B170037287A /* Search.storyboard in Resources */,
 				052BD2121E6E97CE0037287A /* AnswerCell.xib in Resources */,
@@ -848,9 +871,12 @@
 				054B5D221E70823700E7EE4D /* WhaleSynchronizer.swift in Sources */,
 				05634E851E6F5B6E00116D47 /* SearchViewController.swift in Sources */,
 				05F41A371E752F4F002E838F /* WhaleTabBarController.swift in Sources */,
+				055C01661E79F22E00EDE252 /* ActivityQuestionCell.swift in Sources */,
 				05DF705F1E77EAB2006D2F7E /* HomeSectionModel.swift in Sources */,
 				052BD2261E6EAB390037287A /* Networking.swift in Sources */,
+				055C015D1E79EDB400EDE252 /* ActivityViewModel.swift in Sources */,
 				052BD2091E6E93850037287A /* JSONComment.swift in Sources */,
+				055C01621E79F21D00EDE252 /* ActivityFollowCell.swift in Sources */,
 				059EDD401E7132DA0042B621 /* UICollectionView+Extensions.swift in Sources */,
 				05F41A431E75559C002E838F /* ProfileViewModel.swift in Sources */,
 				050A0D711E71D08A00A5659F /* HomeViewModel.swift in Sources */,
@@ -882,8 +908,10 @@
 				050A0D6F1E7154EF00A5659F /* UIScrollView+Extension.swift in Sources */,
 				05634E8E1E6F897700116D47 /* Answer.swift in Sources */,
 				05634E821E6F5B6E00116D47 /* ActivityViewController.swift in Sources */,
+				055C015F1E79EDC300EDE252 /* ActivitySectionModel.swift in Sources */,
 				0563DFA71E7680CE00184D5E /* CommentSectionModel.swift in Sources */,
 				059EDD381E711C830042B621 /* PageData.swift in Sources */,
+				055C01691E7A486600EDE252 /* RoundedButton.swift in Sources */,
 				050A0D751E71D0D100A5659F /* AsyncOperation.swift in Sources */,
 				052ED9251E6E6F9A0078ABCF /* Whale.xcdatamodeld in Sources */,
 			);

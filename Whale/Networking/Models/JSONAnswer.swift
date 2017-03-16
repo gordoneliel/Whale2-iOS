@@ -14,6 +14,8 @@ struct JSONAnswer {
     let videoURL: URL
     let thumbnailURL: URL
     let question: JSONQuestion
+    let likesCount: Int
+    let commentsCount: Int
 }
 
 extension JSONAnswer: Decodable {
@@ -28,5 +30,7 @@ extension JSONAnswer: Decodable {
         self.videoURL = videoURL
         self.thumbnailURL = thumbnailURL
         self.question = question
+        self.likesCount = "likes_count" <~~ json ?? 0
+        self.commentsCount = "comment_count" <~~ json ?? 0
     }
 }

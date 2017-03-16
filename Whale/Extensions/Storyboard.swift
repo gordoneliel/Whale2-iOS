@@ -30,12 +30,15 @@ extension Scene {
             vc = instantiate(ProfileViewController.self)
         }
         
-        vc.tabBarItem = UITabBarItem(
+        let tabItem = UITabBarItem(
             title: self.description,
             image: self.icon(),
             tag: self.rawValue
         )
         
+        tabItem.selectedImage = self.selectedIcon()
+            
+        vc.tabBarItem = tabItem
         return vc
     }
     
@@ -46,6 +49,16 @@ extension Scene {
              .search,
              .profile:
             return UIImage(named: self.description.lowercased())!
+        }
+    }
+    
+    func selectedIcon() -> UIImage {
+        switch self {
+        case .home,
+             .activity,
+             .search,
+             .profile:
+            return UIImage(named: self.description.lowercased() + "Selected")!
         }
     }
 }

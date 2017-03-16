@@ -21,6 +21,8 @@ enum CoreApiClient {
     )
     case updateUser(firstName: String, lastName: String, phone: String, data: Data?)
     case users(page: Int, pageSize: Int)
+    
+    case questions
 //    case followUser(userId: Int)
 //    case unfollowUser(userId: Int)
     
@@ -49,12 +51,19 @@ extension CoreApiClient: TargetType {
             return "v1/answers"
         case let .comments(answerId, _, _):
             return "v1/answers/\(answerId)/comments"
+        case .questions:
+            return "v1/questions"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .me, .users, .authenticateUser, .answers, .comments:
+        case .me,
+             .users,
+             .authenticateUser,
+             .answers,
+             .comments,
+             .questions:
             return .get
         case .createUser:
             return .post
@@ -65,7 +74,7 @@ extension CoreApiClient: TargetType {
     
     var parameters: [String: Any]? {
         switch self {
-        case .me:
+        case .me, .questions:
             return [:]
         case .authenticateUser:
             return [:]
@@ -107,6 +116,8 @@ extension CoreApiClient: TargetType {
             return stubbedResponse("answers")
         case .comments:
             return stubbedResponse("comments")
+        case .questions:
+            return stubbedResponse("questions")
         }
     }
 }

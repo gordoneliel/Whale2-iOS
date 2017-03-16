@@ -10,6 +10,8 @@ import UIKit
 
 class VideoPlayerViewController: UIViewController {
     
+    @IBOutlet weak var commentCount: UIButton!
+    @IBOutlet weak var likeCount: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var questionUserImage: UIImageView!
     @IBOutlet weak var questionUser: UILabel!
@@ -29,6 +31,8 @@ class VideoPlayerViewController: UIViewController {
         question.text = videoPlayerViewModel?.selectedAnswer.question
         questionUser.text = videoPlayerViewModel?.selectedAnswer.questionUserName
         questionUserImage.kf.setImage(with: videoPlayerViewModel?.selectedAnswer.questionUserImageURL)
+        likeCount.setTitle(videoPlayerViewModel?.selectedAnswer.likeCount, for: .normal)
+        commentCount.setTitle(videoPlayerViewModel?.selectedAnswer.commentCount, for: .normal)
         
         videoPlayerView.videoURLs = (viewModel.selectedAnswer.videoURL, viewModel.answers.map{$0.videoURL})
         
@@ -36,6 +40,11 @@ class VideoPlayerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         videoPlayerView.play()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        videoPlayerView.pause()
     }
 
     @IBAction func playPressed(_ sender: UIButton) {

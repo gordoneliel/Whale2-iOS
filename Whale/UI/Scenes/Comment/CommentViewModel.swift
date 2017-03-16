@@ -16,39 +16,13 @@ class CommentViewModel {
     let queue = OperationQueue()
     weak var delegate: ViewModelDidComplete?
     
+    var pagination: PaginationViewModel<JSONComment>
+    var paginationState: PaginationState = .loading(page: 0, pageSize: 6)
+    
     init(answerCellViewModel: AnswerCellViewModel) {
         self.answerCellViewModel = answerCellViewModel
         
-        let downloadOp = DownloadOperation<JSONComment>(
-            page: 0,
-            pageSize: 50,
-            apiClient: CoreApiClient.comments(
-                answerId: answerCellViewModel.answerId,
-                page: 0,
-                pageSize: 50
-            )
-        )
-        
-        queue.addOperation(downloadOp)
-        
-        downloadOp.completionBlock = {
-            guard let pageData = downloadOp.pageData else {return}
-            
-            let comments = pageData.data.map {
-                return CommentCellViewModel(
-                    user: "\($0.commenter.firstName) \($0.commenter.lastName)",
-                    userImage: $0.commenter.profileImageUrl,
-                    comment: $0.content
-                )
-            }
-            
-            let sectionModel = CommentSectionModel(header: "Comment", items: comments)
-            self.dataSource.setSections([sectionModel])
-            
-            DispatchQueue.main.async {
-                self.delegate?.didCompleteLoading()
-            }
-        }
+         pagination = PaginationViewModel<JSONComment>(page: 0, pageSize: 3)
         
         // Datasource
         dataSource.configureCell = { dataSource, cv, indexPath, item in
@@ -60,4 +34,58 @@ class CommentViewModel {
         }
     }
     
+    func loadNextPage() {
+        // From nextIdle to loading
+        let pageState = paginationState.next()
+        
+        let newRequest = CoreApiClient.comments(
+            answerId: answerCellViewModel.answerId,
+            page: pageState.paginationValue().page,
+            pageSize: pageState.paginationValue().pageSize
+        )
+        
+        pagination.paginate(request: newRequest) { [unowned
+            self] in
+            defer {
+                self.delegate?.didCompleteLoading()
+                self.paginationState = .nextIdle(
+                    page: self.pagination.currentPage,
+                    pageSize: self.pagination.pageSize
+                )
+                if self.pagination.isFinalPage {
+                    self.paginationState = .loadedAllPages
+                }
+                
+            }
+            
+            guard let jsonComments = self.pagination.pageData?.data else {return}
+            
+            guard !jsonComments.isEmpty else {return}
+            
+            let items = jsonComments.map { comment in
+                return CommentCellViewModel(
+                    user: "\(comment.commenter.firstName) \(comment.commenter.lastName)",
+                    userImage: comment.commenter.profileImageUrl,
+                    comment: comment.content
+                )
+            }
+            
+
+            guard let existing = self.dataSource.sectionModels.first else {
+                let section = CommentSectionModel(header: "Comments", items: items)
+                self.dataSource.setSections([section])
+                return
+            }
+            
+            let newCollection = existing.items + items
+            
+            let newSection = CommentSectionModel(header: "Comments", items: newCollection)
+            
+            self.dataSource.setSections([newSection])
+        }
+    }
+    
+    func canLoadNext() -> Bool {
+        return paginationState == PaginationState.nextIdle(page: 0, pageSize: 0)
+    }
 }

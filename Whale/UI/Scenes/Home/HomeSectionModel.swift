@@ -46,4 +46,6 @@ struct AnswerCellViewModel {
     let questionUserImageURL: URL?
     let answerUserImageURL: URL?
     let answerId: Int
+    let likeCount: String
+    let commentCount: String
 }

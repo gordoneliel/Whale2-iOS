@@ -28,7 +28,8 @@ class HomeViewController: UIViewController {
                 width: screenWidth,
                 height: 300
             ),
-            headerSize: CGSize(width: screenWidth, height: 60)
+            headerSize: CGSize(width: screenWidth, height: 65),
+            spacing: 15
         )
         
         collectionView.refreshControl = UIRefreshControl()

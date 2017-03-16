@@ -9,6 +9,49 @@
 import Foundation
 import Gloss
 
+enum PaginationState {
+    case nextIdle(page: Int, pageSize: Int)
+    case loadedAllPages
+    case loading(page: Int, pageSize: Int)
+}
+
+extension PaginationState {
+    func paginationValue() -> (page: Int, pageSize: Int) {
+        switch self {
+        case let .nextIdle(page, pageSize), let .loading(page, pageSize):
+            return (page, pageSize)
+        default:
+            return (0, 0)
+        }
+    }
+    
+    func next() -> PaginationState {
+        switch self {
+        case let .nextIdle(page, pageSize):
+            return .loading(page: page, pageSize: pageSize)
+        case let .loading(page, pageSize):
+            return .nextIdle(page: page, pageSize: pageSize)
+        default:
+            return .loadedAllPages
+        }
+    }
+}
+
+extension PaginationState: Equatable {}
+
+func ==(lhs: PaginationState, rhs: PaginationState) -> Bool {
+    switch (lhs, rhs) {
+    case (.nextIdle(_, _), .nextIdle(_, _)):
+        return true
+    case (.loading(_, _), .loading(_, _)):
+        return true
+    case (.loadedAllPages, .loadedAllPages):
+        return true
+    default:
+        return false
+    }
+}
+
 class PaginationViewModel<T: Decodable> {
     var currentPage = 0
     var pageSize = 50
@@ -23,13 +66,16 @@ class PaginationViewModel<T: Decodable> {
         self.pageSize = pageSize
     }
     
+    /*
+     Paginates a network request
+     Blocks requests till previous request is completed, presents data on the main queue
+     */
     func paginate(request: CoreApiClient, _ completionBlock: @escaping () -> Void) {
         // Wait until we are done with pagination
-        if !loading {
+        if !loading && !isFinalPage {
             
            self.loading = true
             DispatchQueue.global().async {
-                
                 self.startRequest(request: request) { [unowned self] (pageData) in
                     guard pageData.page <= pageData.totalPages else {
                         self.isFinalPage = true
@@ -40,8 +86,10 @@ class PaginationViewModel<T: Decodable> {
                     self.pageData = pageData
                     self.currentPage = pageData.page + 1
                     
-                    self.loading = false
-                    completionBlock()
+                    DispatchQueue.main.async {
+                        self.loading = false
+                        completionBlock()
+                    }
                 }
             }
         }
