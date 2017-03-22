@@ -29,6 +29,7 @@ class CameraVideoView: UIView {
     var previewLayer: AVCaptureVideoPreviewLayer {
         return layer as! AVCaptureVideoPreviewLayer
     }
+    
     private var audioConnection: AVCaptureConnection!
     private var videoConnection: AVCaptureConnection!
     var movieFileOutput: AVCaptureMovieFileOutput?
@@ -59,7 +60,7 @@ class CameraVideoView: UIView {
             mediaType: AVMediaTypeVideo,
             position: AVCaptureDevicePosition.front
         )
-        
+
         do {
             let input = try AVCaptureDeviceInput(device: frontCamera)
             
@@ -132,10 +133,18 @@ class CameraVideoView: UIView {
             
             // Start recording to a temporary file.
             // Store video in temp location so we can delete it
+            do {
+                let tempVideoURL = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("temp-videos")
+                
+                let outputFileName = NSUUID().uuidString
+                let tempFileURL = tempVideoURL.appendingPathComponent(outputFileName).appendingPathExtension("mov")
+                
+                movieFileOutput.startRecording(toOutputFileURL: tempFileURL, recordingDelegate: self)
+            }catch {
+                
+            }
             
-            let outputFileName = NSUUID().uuidString
-            let outputFilePath = (NSTemporaryDirectory() as NSString).appendingPathComponent((outputFileName as NSString).appendingPathExtension("mov")!)
-            movieFileOutput.startRecording(toOutputFileURL: URL(fileURLWithPath: outputFilePath), recordingDelegate: self)
+            
         }
     }
     
@@ -180,9 +189,15 @@ class CameraVideoView: UIView {
     }
     
     func cleanUpTempResources() {
-        if FileManager.default.fileExists(atPath: NSTemporaryDirectory()) {
+
+        let tempDir = NSTemporaryDirectory()
+        let tempVideoURL = URL(fileURLWithPath: tempDir, isDirectory: true)
+            .appendingPathComponent("temp-videos")
+        let tempString = tempVideoURL.absoluteString
+        
+        if FileManager.default.fileExists(atPath: tempString) {
             do {
-                try FileManager.default.removeItem(atPath: NSTemporaryDirectory())
+                try FileManager.default.removeItem(atPath: tempString)
             }
             catch {
                 print("Could not remove file)")

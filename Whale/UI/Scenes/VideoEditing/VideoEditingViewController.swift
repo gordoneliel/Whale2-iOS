@@ -40,9 +40,19 @@ class VideoEditingViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func dismissViewController(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        let videoUploadVC = VideoUploadViewController(nibName: VideoUploadViewController.storyboardIdentifier, bundle: nil)
+        present(videoUploadVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension VideoEditingViewController: VideoRecordingDelegate {

@@ -16,6 +16,14 @@ struct JSONComment {
 }
 
 extension JSONComment: Decodable {
+    
+    // Used for posting a comment, we don't need commenter or id
+    init(content: String) {
+        self.content = content
+        self.id = -1
+        self.commenter = JSONUser(id: -1, email: "'", firstName: "", lastName: "", profileImageUrl: nil, followerCount: nil, followingCount: nil)
+    }
+    
     init?(json: JSON) {
         guard let id: Int = "id" <~~ json,
             let content: String = "content" <~~ json,
@@ -25,5 +33,13 @@ extension JSONComment: Decodable {
         self.id = id
         self.content = content
         self.commenter = commenter
+    }
+}
+
+extension JSONComment: Encodable {
+    func toJSON() -> JSON? {
+        return [
+            "content": self.content
+        ]
     }
 }

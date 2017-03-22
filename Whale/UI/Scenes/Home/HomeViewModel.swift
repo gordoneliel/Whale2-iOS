@@ -8,23 +8,21 @@
 
 import Foundation
 import Gloss
-
-
+import UIKit
 
 class HomeViewModel: ViewModelType {
     let dataSource = SectionedDataSource<HomeSectionModel>()
-    let networking = BaseNetworking.newNetworking()
+    private let networking = BaseNetworking.newNetworking()
     weak var delegate: ViewModelDidComplete?
     var selectedItem: AnswerCellViewModel?
     var answers: [AnswerCellViewModel] = []
-    
     let title = "Answers"
     
-    var pagination: PaginationViewModel<JSONAnswer>
-    var paginationState: PaginationState = .loading(page: 0, pageSize: 3)
+    private var pagination: PaginationViewModel<JSONAnswer>
+    private var paginationState: PaginationState = .loading(page: 0, pageSize: 3)
     
     init() {
-        pagination = PaginationViewModel<JSONAnswer>(page: 0, pageSize: 3)
+        pagination = PaginationViewModel<JSONAnswer>()
         
         // DataSource
         dataSource.configureCell = { (dataSource, cv, indexPath, cellItem) in
@@ -64,7 +62,8 @@ class HomeViewModel: ViewModelType {
             pageSize: pageState.paginationValue().pageSize
         )
         
-        pagination.paginate(request: newRequest) { [unowned
+        pagination
+            .paginate(request: newRequest) { [unowned
             self] in
             defer {
                 self.delegate?.didCompleteLoading()
@@ -98,6 +97,7 @@ class HomeViewModel: ViewModelType {
             }
             
             self.answers = items
+            
             guard let existing = self.dataSource.sectionModels.first else {
                 let section = HomeSectionModel.answers(title: "Answers", items: items)
                 self.dataSource.setSections([section])

@@ -131,8 +131,8 @@
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aNG-e0-XhE" userLabel="Comments">
-                                                                <rect key="frame" x="0.0" y="42" width="120" height="30"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="aNG-e0-XhE" userLabel="Comments">
+                                                                <rect key="frame" x="0.0" y="42" width="265" height="30"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVv-uE-vuI" userLabel="Like">
                                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -148,15 +148,23 @@
                                                                         </state>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQL-Ns-9kz" userLabel="Comment">
-                                                                        <rect key="frame" x="60" y="0.0" width="60" height="30"/>
+                                                                        <rect key="frame" x="75" y="0.0" width="60" height="30"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="60" id="Qzu-mr-nVi"/>
+                                                                        </constraints>
                                                                         <color key="tintColor" red="0.16373866579999999" green="0.16373866579999999" blue="0.16373866579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                                                         <state key="normal" title="50" image="Comment">
                                                                             <color key="titleColor" red="0.16373866579999999" green="0.16373866579999999" blue="0.16373866579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         </state>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-9L-pso">
+                                                                        <rect key="frame" x="150" y="0.0" width="115" height="30"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                        <state key="normal" title="View Comments"/>
                                                                         <connections>
-                                                                            <action selector="commentPressed:" destination="b2u-tw-U58" eventType="touchUpInside" id="64k-4E-AOd"/>
+                                                                            <action selector="commentPressed:" destination="b2u-tw-U58" eventType="touchUpInside" id="jYY-LT-Vb9"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -164,6 +172,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <color key="tintColor" red="0.0" green="0.63294907509999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <edgeInsets key="layoutMargins" top="10" left="10" bottom="5" right="10"/>
                                             </stackView>
                                         </subviews>
@@ -184,6 +193,7 @@
                                     <constraint firstAttribute="width" secondItem="7lo-41-2WQ" secondAttribute="height" multiplier="1:1" id="Uko-7b-CLC"/>
                                     <constraint firstAttribute="height" constant="45" id="bWW-3B-pgg"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="CloseButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -232,7 +242,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="owh-bw-6xS">
-                                <rect key="frame" x="0.0" y="20" width="375" height="587"/>
+                                <rect key="frame" x="0.0" y="104.5" width="375" height="502.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WPD-cs-G9E">
                                     <size key="itemSize" width="50" height="50"/>
@@ -254,12 +264,16 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwF-zu-Ggr">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwF-zu-Ggr">
                                                 <rect key="frame" x="285" y="10" width="80" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="nsx-eF-95U"/>
                                                 </constraints>
-                                                <state key="normal" title="Post"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <state key="normal" image="SendButton"/>
+                                                <connections>
+                                                    <action selector="postButtonPressed:" destination="tcY-g3-hYI" eventType="touchUpInside" id="ojU-3c-Bm3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="10" left="10" bottom="10" right="10"/>
@@ -274,20 +288,66 @@
                                     <constraint firstItem="cB0-Gs-cV2" firstAttribute="leading" secondItem="xST-z1-um7" secondAttribute="leading" id="pww-ND-umc"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="AoU-Xi-ht5">
+                                <rect key="frame" x="16" y="20" width="359" height="84.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUl-Bo-pUD">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mUl-Bo-pUD" secondAttribute="height" id="UOu-Oz-awr"/>
+                                            <constraint firstAttribute="height" constant="45" id="mnK-vy-fAm"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.1778254534" green="0.1778254534" blue="0.1778254534" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" image="CloseButton"/>
+                                        <connections>
+                                            <action selector="closePressed:" destination="tcY-g3-hYI" eventType="touchUpInside" id="f9B-uq-dim"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kj8-47-91P">
+                                        <rect key="frame" x="0.0" y="45" width="359" height="39.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-d2-UsV">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="33.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <color key="highlightedColor" red="0.1778254534" green="0.1778254534" blue="0.1778254534" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcq-Ii-P1z">
+                                                <rect key="frame" x="0.0" y="38.5" width="359" height="1"/>
+                                                <color key="backgroundColor" red="0.95298332253886009" green="0.95298332253886009" blue="0.95298332253886009" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="g7F-DI-1oI"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kj8-47-91P" secondAttribute="trailing" id="O5c-h9-9jO"/>
+                                    <constraint firstItem="kj8-47-91P" firstAttribute="leading" secondItem="AoU-Xi-ht5" secondAttribute="leading" id="ZVb-Hi-1ca"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="AoU-Xi-ht5" firstAttribute="leading" secondItem="S0b-rl-nAK" secondAttribute="leadingMargin" id="1Sv-Sr-Hga"/>
+                            <constraint firstItem="owh-bw-6xS" firstAttribute="top" secondItem="AoU-Xi-ht5" secondAttribute="bottom" id="5DO-Xb-UJq"/>
+                            <constraint firstItem="AoU-Xi-ht5" firstAttribute="top" secondItem="DsL-cT-wY3" secondAttribute="bottom" id="5iq-BP-XkI"/>
                             <constraint firstItem="xST-z1-um7" firstAttribute="leading" secondItem="S0b-rl-nAK" secondAttribute="leading" id="CUr-O6-fR1"/>
                             <constraint firstAttribute="trailing" secondItem="xST-z1-um7" secondAttribute="trailing" id="QZL-Md-n2U"/>
                             <constraint firstItem="owh-bw-6xS" firstAttribute="leading" secondItem="S0b-rl-nAK" secondAttribute="leading" id="VBy-2a-VNs"/>
                             <constraint firstItem="xST-z1-um7" firstAttribute="top" secondItem="owh-bw-6xS" secondAttribute="bottom" id="eQ3-Jw-wpJ"/>
+                            <constraint firstAttribute="trailing" secondItem="AoU-Xi-ht5" secondAttribute="trailing" id="nFO-tY-KQZ"/>
                             <constraint firstItem="Ytc-4P-jTb" firstAttribute="top" secondItem="xST-z1-um7" secondAttribute="bottom" id="vk7-zd-bkh"/>
                             <constraint firstAttribute="trailing" secondItem="owh-bw-6xS" secondAttribute="trailing" id="wl5-aA-fDx"/>
-                            <constraint firstItem="owh-bw-6xS" firstAttribute="top" secondItem="DsL-cT-wY3" secondAttribute="bottom" id="wvd-Yl-SRc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="owh-bw-6xS" id="JdF-my-OTF"/>
+                        <outlet property="commentBarBottomConstraint" destination="vk7-zd-bkh" id="3jf-Fp-fUR"/>
+                        <outlet property="commentTextField" destination="BP5-Ze-Ega" id="F0g-B1-Rou"/>
+                        <outlet property="headerTitle" destination="DeA-d2-UsV" id="cxA-ms-I7F"/>
+                        <outlet property="postButton" destination="iwF-zu-Ggr" id="2CB-ov-Ja0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgy-Bu-e6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,5 +362,6 @@
         <image name="PauseButton" width="21" height="30"/>
         <image name="PlayIcon" width="28" height="30"/>
         <image name="QIcon" width="26" height="26"/>
+        <image name="SendButton" width="25" height="25"/>
     </resources>
 </document>

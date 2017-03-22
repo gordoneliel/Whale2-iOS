@@ -28,6 +28,7 @@ enum CoreApiClient {
     
     case answers(page: Int, pageSize: Int)
     case comments(answerId: Int, page: Int, pageSize: Int)
+    case createComment(answerId: Int, content: String)
     
 }
 
@@ -51,6 +52,8 @@ extension CoreApiClient: TargetType {
             return "v1/answers"
         case let .comments(answerId, _, _):
             return "v1/answers/\(answerId)/comments"
+        case let .createComment(answerId, _):
+            return "v1/answers/\(answerId)/comments"
         case .questions:
             return "v1/questions"
         }
@@ -65,7 +68,7 @@ extension CoreApiClient: TargetType {
              .comments,
              .questions:
             return .get
-        case .createUser:
+        case .createUser, .createComment:
             return .post
         case .updateUser:
             return .patch
@@ -88,6 +91,10 @@ extension CoreApiClient: TargetType {
             return [
                 "per_page": perPage,
                 "page": page
+            ]
+        case let .createComment(_, content):
+            return [
+                "comment": content
             ]
         }
     }
@@ -114,7 +121,7 @@ extension CoreApiClient: TargetType {
             return stubbedResponse("all_users")
         case .answers:
             return stubbedResponse("answers")
-        case .comments:
+        case .comments, .createComment:
             return stubbedResponse("comments")
         case .questions:
             return stubbedResponse("questions")

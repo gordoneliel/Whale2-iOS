@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum UIState {
+    case success
+    case error
+    case nodata
+}
+
 class CommentViewModel {
     let answerCellViewModel: AnswerCellViewModel
     
@@ -15,14 +21,15 @@ class CommentViewModel {
     let networking = BaseNetworking.newNetworking()
     let queue = OperationQueue()
     weak var delegate: ViewModelDidComplete?
+    let headerTitle = "Comments"
     
     var pagination: PaginationViewModel<JSONComment>
-    var paginationState: PaginationState = .loading(page: 0, pageSize: 6)
+    var paginationState: PaginationState = .loading(page: 0, pageSize: 10)
     
     init(answerCellViewModel: AnswerCellViewModel) {
         self.answerCellViewModel = answerCellViewModel
         
-         pagination = PaginationViewModel<JSONComment>(page: 0, pageSize: 3)
+         pagination = PaginationViewModel<JSONComment>()
         
         // Datasource
         dataSource.configureCell = { dataSource, cv, indexPath, item in
@@ -31,6 +38,27 @@ class CommentViewModel {
             cell.viewModel = item
             
             return cell
+        }
+    }
+    
+    func postComment(content: String, completionBlock: @escaping (_ state: UIState) -> Void) {
+        networking.request(CoreApiClient.createComment(answerId: answerCellViewModel.answerId, content: content)) { completion in
+            switch completion {
+            case let .success(response):
+                var uiState = UIState.error
+                
+                do {
+                    _ = try response.filterSuccessfulStatusCodes()
+                    uiState = UIState.success
+                }catch {
+                    uiState = UIState.error
+                }
+                
+                completionBlock(uiState)
+            case .failure(_):
+                let errorState = UIState.error
+                completionBlock(errorState)
+            }
         }
     }
     

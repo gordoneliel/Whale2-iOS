@@ -34,7 +34,6 @@ class VideoPlayerView: UIView {
         
         let player = AVQueuePlayer(items: self.playerItems ?? [])
         return player
-        
     }()
     
     open var playerLooper: AVPlayerLooper?
@@ -70,11 +69,19 @@ class VideoPlayerView: UIView {
     
     open var videoGravity = AVLayerVideoGravityResizeAspectFill {
         didSet {
-            self.playerLayer?.videoGravity = videoGravity
+            self.playerLayer.videoGravity = videoGravity
         }
     }
     
-    fileprivate var playerLayer: AVPlayerLayer?
+    fileprivate var playerLayer: AVPlayerLayer {
+        return layer as! AVPlayerLayer
+    }
+    
+    override class var layerClass: AnyClass {
+        get {
+            return AVPlayerLayer.self
+        }
+    }
     
     fileprivate func onSetVideoURL() {
         self.configPlayer()
@@ -84,7 +91,7 @@ class VideoPlayerView: UIView {
         self.playerItems = videoURLs.videos.map{AVPlayerItem(url: $0)}
         
         self.player = AVQueuePlayer(items: self.playerItems!)
-        
+
         self.player.addObserver(
             self,
             forKeyPath: "rate",
@@ -92,14 +99,15 @@ class VideoPlayerView: UIView {
             context: nil
         )
         
-        self.playerLooper = AVPlayerLooper(player: self.player, templateItem: AVPlayerItem(url: videoURLs.template))
+        self.playerLooper = AVPlayerLooper(
+            player: self.player,
+            templateItem: AVPlayerItem(url: videoURLs.template)
+        )
         
-        self.playerLayer = AVPlayerLayer(player: player)
+        self.playerLayer.videoGravity = videoGravity
+        self.playerLayer.player = player
         
-        self.playerLayer!.videoGravity = videoGravity
-        
-        self.layer.insertSublayer(timeDisplayLayer, at: 0)
-        self.layer.insertSublayer(playerLayer!, below: timeDisplayLayer)
+        self.layer.insertSublayer(timeDisplayLayer, above: self.layer)
         
         self.setNeedsLayout()
         self.layoutIfNeeded()
@@ -136,14 +144,8 @@ class VideoPlayerView: UIView {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
-        self.player.removeObserver(self, forKeyPath: "rate")
+        NotificationCenter.default.removeObserver(self.player)
         removeTimeObserver()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.playerLayer?.frame = self.bounds
     }
     
     open func pause() {
@@ -187,7 +189,7 @@ extension VideoPlayerView {
         
     }
     
-    @objc func displayLinkSync() {
+    func displayLinkSync() {
         guard let maxTime = player.currentItem?.duration.seconds else {return}
         
         timeDisplayLayer.strokeEnd = CGFloat((currentTime) / maxTime)

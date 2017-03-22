@@ -60,9 +60,7 @@ class PaginationViewModel<T: Decodable> {
     var isFinalPage = false
     var loading: Bool = false
     
-    init(page: Int, pageSize: Int) {
-        self.currentPage = page
-        self.pageSize = pageSize
+    init() {
     }
     
     /*
@@ -84,6 +82,7 @@ class PaginationViewModel<T: Decodable> {
                     
                     self.pageData = pageData
                     self.currentPage = pageData.page + 1
+                    self.pageSize = pageData.perPage
                     
                     DispatchQueue.main.async {
                         self.loading = false

@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYY-oc-UHe" customClass="CameraVideoView" customModule="Whale" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuC-uk-aMO" customClass="RoundedButton" customModule="Whale" customModuleProvider="target">
-                            <rect key="frame" x="147.5" y="462" width="80" height="80"/>
+                            <rect key="frame" x="147.5" y="412" width="80" height="80"/>
                             <color key="backgroundColor" red="0.74901960779999999" green="0.0" blue="0.40820895909999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="cax-Wn-Ij8"/>
@@ -49,6 +49,7 @@
                                 <constraint firstAttribute="height" constant="40" id="Hj0-kv-MdQ"/>
                                 <constraint firstAttribute="width" secondItem="usA-1r-rNx" secondAttribute="height" id="X0l-MZ-Ovd"/>
                             </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="CloseButton"/>
                             <connections>
                                 <action selector="dismissViewController:" destination="-1" eventType="touchUpInside" id="9Bt-ZN-cvY"/>
@@ -64,21 +65,61 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-Iz-7CX" customClass="VideoEditingToolbar" customModule="Whale" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="567" width="375" height="100"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="517" width="375" height="100"/>
+                    <color key="backgroundColor" red="0.1778254533678757" green="0.1778254533678757" blue="0.1778254533678757" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="FB5-x1-jGr"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jG4-SV-KjR">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g88-9X-6Ts">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1W-9X-1kw">
+                                    <rect key="frame" x="15" y="8" width="172.5" height="34"/>
+                                    <state key="normal" title="Cancel">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelPressed:" destination="-1" eventType="touchUpInside" id="FZU-wN-d4H"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwM-PQ-aGm">
+                                    <rect key="frame" x="187.5" y="8" width="172.5" height="34"/>
+                                    <state key="normal" title="Next">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="nextButtonPressed:" destination="-1" eventType="touchUpInside" id="HBZ-7C-HeV"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="8" left="15" bottom="8" right="15"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="g88-9X-6Ts" firstAttribute="leading" secondItem="jG4-SV-KjR" secondAttribute="leading" id="DI6-RG-joJ"/>
+                        <constraint firstAttribute="bottom" secondItem="g88-9X-6Ts" secondAttribute="bottom" id="Uhz-Qw-IBt"/>
+                        <constraint firstAttribute="height" constant="50" id="kPo-Uf-DRS"/>
+                        <constraint firstItem="g88-9X-6Ts" firstAttribute="top" secondItem="jG4-SV-KjR" secondAttribute="top" id="lhq-FF-7QI"/>
+                        <constraint firstAttribute="trailing" secondItem="g88-9X-6Ts" secondAttribute="trailing" id="tiS-j1-UKo"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.065957521079999998" green="0.06708616932" blue="0.068531411910000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="TFE-Iz-7CX" secondAttribute="trailing" id="9M0-Vi-sTV"/>
-                <constraint firstAttribute="bottom" secondItem="TFE-Iz-7CX" secondAttribute="bottom" id="DWS-S3-WbJ"/>
+                <constraint firstAttribute="bottom" secondItem="jG4-SV-KjR" secondAttribute="bottom" id="Hvm-C9-d7y"/>
                 <constraint firstItem="TFE-Iz-7CX" firstAttribute="top" secondItem="vYY-oc-UHe" secondAttribute="bottom" id="Oda-IL-30z"/>
+                <constraint firstItem="jG4-SV-KjR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QpY-GO-r0O"/>
                 <constraint firstItem="TFE-Iz-7CX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="akT-Ni-JYb"/>
+                <constraint firstAttribute="trailing" secondItem="jG4-SV-KjR" secondAttribute="trailing" id="eHf-aS-pqw"/>
                 <constraint firstAttribute="trailing" secondItem="vYY-oc-UHe" secondAttribute="trailing" id="me8-Zf-fWG"/>
                 <constraint firstItem="vYY-oc-UHe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pk6-hr-say"/>
+                <constraint firstItem="jG4-SV-KjR" firstAttribute="top" secondItem="TFE-Iz-7CX" secondAttribute="bottom" id="uSG-Ou-0sR"/>
                 <constraint firstItem="vYY-oc-UHe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zBi-ke-uWz"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>

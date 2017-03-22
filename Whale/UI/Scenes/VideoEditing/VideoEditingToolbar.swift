@@ -22,7 +22,13 @@ class VideoEditingToolbar: UIView {
         super.awakeFromNib()
         
         collectionView.dataSource = self
-        collectionView.delegate = self
+        
+        collectionView.collectionViewLayout = ListLayout(
+            size: CGSize(width: 80, height: 80),
+            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+            spacing: 10,
+            scrollDirection: .horizontal
+        )
         
         collectionView.register(VideoSegmentCell.self)
     }
@@ -68,24 +74,5 @@ extension VideoEditingToolbar: UICollectionViewDataSource {
         cell.thumbnailImageView.image = videoSegments[indexPath.row].previewImage
         
         return cell
-    }
-    
-}
-
-extension VideoEditingToolbar: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 80)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
 }

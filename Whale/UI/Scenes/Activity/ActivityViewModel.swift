@@ -9,6 +9,7 @@
 import Foundation
 import Result
 import Moya
+import UIKit
 
 class ActivityViewModel {
     let dataSource = SectionedDataSource<ActivitySectionModel>()
@@ -63,6 +64,7 @@ class ActivityViewModel {
         // New Followers Section
         let followItem = SectionItem.FollowCellItem(userName: "Eliel, G")
         let newFollowersSection = ActivitySectionModel.follow(title: "New Followers", items: [followItem])
+        
         if self.dataSource.sectionModels.isEmpty {
             self.dataSource.setSections([newFollowersSection])
         }else {

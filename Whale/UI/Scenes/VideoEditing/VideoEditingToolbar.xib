@@ -22,7 +22,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aNZ-Yd-cdX">
                     <rect key="frame" x="0.0" y="0.0" width="507" height="276"/>
-                    <color key="backgroundColor" red="0.065957521079999998" green="0.06708616932" blue="0.068531411910000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q77-lg-p05">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -31,7 +31,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="0.91388932718488958" green="0.90920271525060803" blue="0.91857593911917101" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" red="0.11312614828962678" green="0.11254601419583382" blue="0.11370628238341973" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="aNZ-Yd-cdX" secondAttribute="bottom" id="ADY-7F-m4t"/>
                 <constraint firstItem="aNZ-Yd-cdX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NWR-Iz-iow"/>

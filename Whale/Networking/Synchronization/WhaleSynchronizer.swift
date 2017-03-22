@@ -13,8 +13,6 @@ import Gloss
 class WhaleSynchronizer {
     let whaleAPIClient: CoreApiClient
     let networking: BaseNetworking
-    var currentPage = 0
-    var pageSize = 3
     let downloadQueue = OperationQueue()
     let coreDataClient = CoreDataClient(stack: CoreDataStack())
     

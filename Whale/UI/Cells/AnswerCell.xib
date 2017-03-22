@@ -78,13 +78,13 @@
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNf-ze-Xji" userLabel="Grad">
                                                 <rect key="frame" x="0.0" y="0.0" width="630" height="407"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.62912632042253525" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="10"/>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayButton" translatesAutoresizingMaskIntoConstraints="NO" id="57Y-54-bVz">
-                                                <rect key="frame" x="290" y="178.5" width="50" height="50"/>
+                                                <rect key="frame" x="292.5" y="181" width="45" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="H0V-0J-p6C"/>
+                                                    <constraint firstAttribute="height" constant="45" id="H0V-0J-p6C"/>
                                                     <constraint firstAttribute="width" secondItem="57Y-54-bVz" secondAttribute="height" id="Ioi-Qn-7TO"/>
                                                 </constraints>
                                             </imageView>
