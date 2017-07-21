@@ -52,7 +52,7 @@ func ==(lhs: PaginationState, rhs: PaginationState) -> Bool {
     }
 }
 
-class PaginationViewModel<T: Decodable> {
+class PaginationViewModel<T: Gloss.Decodable> {
     var currentPage = 0
     var pageSize = 50
     var pageData: PageData<T>?

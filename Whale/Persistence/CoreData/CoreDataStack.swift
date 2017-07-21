@@ -18,7 +18,6 @@ public final class CoreDataStack {
         let container = NSPersistentContainer(name: "Whale")
         container.loadPersistentStores(completionHandler: { [weak self](storeDescription, error) in
             if let error = error {
-                NSLog("CoreData error \(error), \(error._userInfo)")
                 self?.errorHandler(error)
             }
         })
@@ -38,7 +37,6 @@ public final class CoreDataStack {
             block(self.viewContext)
         }
     }
-    
     
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         self.persistentContainer.performBackgroundTask(block)

@@ -12,15 +12,12 @@ import UIKit
 
 protocol VideoPlayerDelegate: class {
     func playerDidEnd()
-    func playerDidStart(currentTime: Double)
+    func playerDidStart(progess: Double)
+    func playerStarted()
 }
 
 @IBDesignable
 class VideoPlayerView: UIView {
-    
-    @IBInspectable public var timeDisplayColor: UIColor = UIColor.green
-    
-    fileprivate var timeDisplayLayer: CAShapeLayer = CAShapeLayer()
     
     weak var delegate: VideoPlayerDelegate?
     
@@ -31,7 +28,6 @@ class VideoPlayerView: UIView {
     open var playerItems: [AVPlayerItem]?
     
     lazy var player: AVQueuePlayer = {
-        
         let player = AVQueuePlayer(items: self.playerItems ?? [])
         return player
     }()
@@ -44,10 +40,7 @@ class VideoPlayerView: UIView {
         }
     }
     
-    public var interval = CMTimeMake(1, 60) {
-        didSet {
-        }
-    }
+    public var interval = CMTimeMake(1, 60)
     
     public var currentTime: Double {
         get {
@@ -63,6 +56,19 @@ class VideoPlayerView: UIView {
             let newTime = CMTimeMakeWithSeconds(newValue, timescale)
             player.seek(to: newTime,toleranceBefore: kCMTimeZero,toleranceAfter: kCMTimeZero)
         }
+    }
+    
+    
+    public var totalTime: Double {
+        get {
+            guard let duration = player.currentItem?.duration else {return 0}
+            
+            return CMTimeGetSeconds(duration)
+        }
+    }
+    
+    public var progress: Double {
+        return currentTime / totalTime
     }
     
     fileprivate var timeObserverToken: Any?
@@ -91,6 +97,7 @@ class VideoPlayerView: UIView {
         self.playerItems = videoURLs.videos.map{AVPlayerItem(url: $0)}
         
         self.player = AVQueuePlayer(items: self.playerItems!)
+        self.player.actionAtItemEnd = .advance
 
         self.player.addObserver(
             self,
@@ -98,16 +105,15 @@ class VideoPlayerView: UIView {
             options: NSKeyValueObservingOptions.new,
             context: nil
         )
-        
+
         self.playerLooper = AVPlayerLooper(
             player: self.player,
             templateItem: AVPlayerItem(url: videoURLs.template)
         )
         
+        
         self.playerLayer.videoGravity = videoGravity
         self.playerLayer.player = player
-        
-        self.layer.insertSublayer(timeDisplayLayer, above: self.layer)
         
         self.setNeedsLayout()
         self.layoutIfNeeded()
@@ -121,14 +127,17 @@ class VideoPlayerView: UIView {
             if newRate.floatValue <= 0 {
                 removeTimeObserver()
                 delegate?.playerDidEnd()
+            }else {
+                delegate?.playerStarted()
             }
+            player.seek(to: kCMTimeZero)
         }
     }
     
     fileprivate func addTimeObserver() {
         self.timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time -> Void in
             guard let `self` = self else {return}
-            self.delegate?.playerDidStart(currentTime: self.currentTime)
+            self.delegate?.playerDidStart(progess: self.progress)
         }
     }
     
@@ -138,61 +147,18 @@ class VideoPlayerView: UIView {
     }
     
     fileprivate func removeTimeObserver() {
-        guard let timeObserverToken = timeObserverToken else {return}
+        guard let timeObserverToken = self.timeObserverToken else {return}
         self.timeObserverToken = nil
         player.removeTimeObserver(timeObserverToken)
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self.player)
+        self.player.removeObserver(self, forKeyPath: "rate")
         removeTimeObserver()
     }
     
     open func pause() {
         player.pause()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        createDisplayLink()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        createDisplayLink()
-        
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        drawTimeDisplay()
-    }
-    
-    func createDisplayLink() {
-        // Display link syncs up the current progress of the video to the progress bar at the native frame rate
-        let displayLink = CADisplayLink(target: self, selector: #selector(self.displayLinkSync))
-        displayLink.add(to: .current, forMode: .defaultRunLoopMode)
-    }
-}
-
-// Current time display
-extension VideoPlayerView {
-    func drawTimeDisplay() {
-        // Path
-        let timePath = UIBezierPath()
-        timePath.move(to: CGPoint(x: 0, y: self.bounds.maxY))
-        timePath.addLine(to: CGPoint(x: self.frame.maxX, y: self.bounds.maxY))
-        
-        timeDisplayLayer.lineWidth = 6
-        timeDisplayLayer.strokeColor = timeDisplayColor.cgColor
-        timeDisplayLayer.path = timePath.cgPath
-        
-    }
-    
-    func displayLinkSync() {
-        guard let maxTime = player.currentItem?.duration.seconds else {return}
-        
-        timeDisplayLayer.strokeEnd = CGFloat((currentTime) / maxTime)
     }
 }
 

@@ -54,5 +54,5 @@ struct MyQuestionCellViewModel {
 
 enum SectionItem {
     case FollowCellItem(userName: String)
-    case MyQuestionItem(question: String, user: String, image: URL?)
+    case MyQuestionItem(question: String, user: String, image: URL?, questionId: Int)
 }

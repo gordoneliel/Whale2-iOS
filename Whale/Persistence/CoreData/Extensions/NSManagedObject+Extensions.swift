@@ -22,7 +22,7 @@ extension ManagedObjectType {
 extension NSManagedObject: ManagedObjectType {}
 
 extension NSManagedObjectContext {
-    func insertObject<A: NSManagedObject>() -> A where A: ManagedObjectType {
+    func insertObject<A: NSManagedObject>() -> A {
         guard let obj = NSEntityDescription
             .insertNewObject(forEntityName: A.entityName,
                              into: self) as? A else {

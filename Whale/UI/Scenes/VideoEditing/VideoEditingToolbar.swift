@@ -24,8 +24,8 @@ class VideoEditingToolbar: UIView {
         collectionView.dataSource = self
         
         collectionView.collectionViewLayout = ListLayout(
-            size: CGSize(width: 80, height: 80),
-            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+            size: CGSize(width: 100, height: 80),
+            insets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10),
             spacing: 10,
             scrollDirection: .horizontal
         )

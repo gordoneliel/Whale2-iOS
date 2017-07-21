@@ -13,10 +13,18 @@ enum WhaleError: Swift.Error {
     case couldNotParseJSON
     case notLoggedIn
     case missingData
+    case couldNotParseHeader
 }
 
 extension Moya.Response {
     
+    func mapAuthHeader() throws -> String {
+        let authResponse = response as? HTTPURLResponse
+        
+        guard let authHeader = authResponse?.allHeaderFields["Authorization"] as? String else {throw WhaleError.couldNotParseHeader}
+        
+        return authHeader
+    }
     /**
      Get given JSONified data, pass back an object
      
@@ -24,7 +32,7 @@ extension Moya.Response {
      
      - returns: The model<T>
      */
-    func mapTo<T: Decodable>(_ classType: T.Type) throws -> T {
+    func mapTo<T: Gloss.Decodable>(_ classType: T.Type) throws -> T {
         guard
             let json = try mapJSON() as? JSON,
             let result = T(json: json)
@@ -43,7 +51,7 @@ extension Moya.Response {
      
      - returns: An array of models<[T]>
      */
-    func mapToArray<T: Decodable>(_ classType: T.Type) throws -> [T] {
+    func mapToArray<T: Gloss.Decodable>(_ classType: T.Type) throws -> [T] {
         guard let json = try mapJSON() as? [JSON] else {
             throw WhaleError.couldNotParseJSON
         }

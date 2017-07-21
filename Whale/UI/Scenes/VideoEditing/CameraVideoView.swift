@@ -24,14 +24,10 @@ class CameraVideoView: UIView {
         }
     }
     
-    var videoDataOutput: AVCaptureVideoDataOutput?
-    
     var previewLayer: AVCaptureVideoPreviewLayer {
         return layer as! AVCaptureVideoPreviewLayer
     }
     
-    private var audioConnection: AVCaptureConnection!
-    private var videoConnection: AVCaptureConnection!
     var movieFileOutput: AVCaptureMovieFileOutput?
     var imageOutput = AVCapturePhotoOutput()
     var thumbnailImage: UIImage?
@@ -45,22 +41,24 @@ class CameraVideoView: UIView {
         }
     }
     
-    let videoOutputQueue = DispatchQueue(label: "video-segment-queue")
-    let audioOutputQueue = DispatchQueue(label: "audio-queue")
     let movieOutputQueue = DispatchQueue(label: "movie-queue")
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         captureSession = AVCaptureSession()
+        
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        
+        // VideoPreview
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
         let frontCamera = AVCaptureDevice.defaultDevice(
             withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera,
             mediaType: AVMediaTypeVideo,
             position: AVCaptureDevicePosition.front
         )
-
+        
         do {
             let input = try AVCaptureDeviceInput(device: frontCamera)
             
@@ -68,32 +66,19 @@ class CameraVideoView: UIView {
                 captureSession.addInput(input)
             }
             
-            videoDataOutput = AVCaptureVideoDataOutput()
-            videoDataOutput?.setSampleBufferDelegate(self, queue: videoOutputQueue)
-            
-            captureSession.addOutput(videoDataOutput)
-            
-            // VideoPreview
-            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-            
-            guard let videoConnection = videoDataOutput?.connection(withMediaType: AVMediaTypeVideo) else {return}
-            self.videoConnection = videoConnection
-            
-            
-            captureSession.beginConfiguration()
             let movieFileOutput = AVCaptureMovieFileOutput()
             
             captureSession.addOutput(movieFileOutput)
+            
             guard let movieFileConnection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo) else {return}
             movieFileConnection.preferredVideoStabilizationMode = .auto
+            movieFileConnection.videoOrientation = .portrait
             
             // Photo
             do {
                 guard captureSession.canAddOutput(imageOutput) else {fatalError()}
                 captureSession.addOutput(imageOutput)
             }
-            
-            captureSession.commitConfiguration()
             
             self.movieFileOutput = movieFileOutput
             
@@ -103,15 +88,19 @@ class CameraVideoView: UIView {
         
         // Audio Output
         // setup audio output
+        var audioInput: AVCaptureDeviceInput!
         do {
-            let audioDataOutput = AVCaptureAudioDataOutput()
+            let micDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
             
-            audioDataOutput.setSampleBufferDelegate(self, queue: audioOutputQueue)
-            guard captureSession.canAddOutput(audioDataOutput) else {fatalError()}
+            audioInput = try AVCaptureDeviceInput(device: micDevice)
             
-            captureSession.addOutput(audioDataOutput)
+            guard captureSession.canAddInput(audioInput)
+                else {fatalError()}
             
-            audioConnection = audioDataOutput.connection(withMediaType: AVMediaTypeAudio)
+            captureSession.addInput(audioInput)
+            
+        }catch {
+            
         }
         
     }
@@ -119,32 +108,21 @@ class CameraVideoView: UIView {
     func startRecording() {
         guard let movieFileOutput = self.movieFileOutput else {return}
         
-        let videoPreviewLayerOrientation = previewLayer.connection.videoOrientation
-        
         let settings = AVCapturePhotoSettings()
+        
         imageOutput.capturePhoto(with: settings, delegate: self)
         
         movieOutputQueue.async {
             guard !movieFileOutput.isRecording else { return movieFileOutput.stopRecording() }
             
-            // Update the orientation on the movie file output video connection before starting recording.
-            let movieFileOutputConnection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo)
-            movieFileOutputConnection?.videoOrientation = videoPreviewLayerOrientation
-            
             // Start recording to a temporary file.
             // Store video in temp location so we can delete it
-            do {
-                let tempVideoURL = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("temp-videos")
-                
-                let outputFileName = NSUUID().uuidString
-                let tempFileURL = tempVideoURL.appendingPathComponent(outputFileName).appendingPathExtension("mov")
-                
-                movieFileOutput.startRecording(toOutputFileURL: tempFileURL, recordingDelegate: self)
-            }catch {
-                
-            }
             
+            let tempVideoURL = FileManager.default.temporaryDirectory
+            let outputFileName = NSUUID().uuidString
+            let tempFileURL = tempVideoURL.appendingPathComponent(outputFileName).appendingPathExtension("mov")
             
+            movieFileOutput.startRecording(toOutputFileURL: tempFileURL, recordingDelegate: self)
         }
     }
     
@@ -188,31 +166,19 @@ class CameraVideoView: UIView {
         captureSession.stopRunning()
     }
     
+    // Deletes the temporary folder and recreates it
     func cleanUpTempResources() {
-
-        let tempDir = NSTemporaryDirectory()
-        let tempVideoURL = URL(fileURLWithPath: tempDir, isDirectory: true)
-            .appendingPathComponent("temp-videos")
-        let tempString = tempVideoURL.absoluteString
-        
-        if FileManager.default.fileExists(atPath: tempString) {
-            do {
-                try FileManager.default.removeItem(atPath: tempString)
-            }
-            catch {
-                print("Could not remove file)")
-            }
+        do {
+            let tempURL = FileManager.default.temporaryDirectory
+            try FileManager.default.removeItem(at: tempURL)
+            try FileManager.default.createDirectory(at: tempURL, withIntermediateDirectories: false, attributes: nil)
+        }catch let error {
+            print(error.localizedDescription)
         }
     }
     
     deinit {
         cleanUpTempResources()
-    }
-}
-
-extension CameraVideoView: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate {
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
-        
     }
 }
 

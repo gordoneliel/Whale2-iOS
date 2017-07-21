@@ -21,13 +21,13 @@ extension Scene {
         
         switch self {
         case .home:
-            vc = instantiate(HomeViewController.self)
+            vc = HomeViewController(nibName: HomeViewController.storyboardIdentifier, bundle: nil)
         case .search:
-            vc = instantiate(SearchViewController.self)
+            vc = SearchViewController(nibName: SearchViewController.storyboardIdentifier, bundle: nil)
         case .activity:
-            vc = instantiate(ActivityViewController.self)
+            vc = ActivityViewController(nibName: ActivityViewController.storyboardIdentifier, bundle: nil)
         case .profile:
-            vc = instantiate(ProfileViewController.self)
+            vc = ProfileViewController(nibName: ProfileViewController.storyboardIdentifier, bundle: nil)
         }
         
         let tabItem = UITabBarItem(
@@ -87,3 +87,5 @@ extension Scene {
         return vc
     }
 }
+
+

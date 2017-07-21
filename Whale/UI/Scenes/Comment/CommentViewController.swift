@@ -30,12 +30,15 @@ class CommentViewController: UIViewController {
         
         headerTitle.text = viewModel.headerTitle
         
-        collectionView.collectionViewLayout = ListLayout(
+        let layout = ListLayout(
             size: CGSize(width: UIScreen.main.bounds.width, height: 65),
-            insets: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0),
+            insets: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0),
             spacing: 10
         )
         
+        layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+
+        collectionView.collectionViewLayout = layout
         collectionView.dataSource = viewModel.dataSource
         collectionView.register(CommentCell.self)
         viewModel.delegate = self
@@ -44,11 +47,11 @@ class CommentViewController: UIViewController {
         
     }
     
-    @IBAction func closePressed(_ sender: Any) {
+    @IBAction func closePressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func postButtonPressed(_ sender: Any) {
+    @IBAction func postButtonPressed(_ sender: UIButton) {
         commentTextField.resignFirstResponder()
         guard let content = commentTextField.text else {return}
         

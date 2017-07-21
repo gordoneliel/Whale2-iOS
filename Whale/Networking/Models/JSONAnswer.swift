@@ -18,7 +18,7 @@ struct JSONAnswer {
     let commentsCount: Int
 }
 
-extension JSONAnswer: Decodable {
+extension JSONAnswer: Gloss.Decodable {
     init?(json: JSON) {
         guard let id: Int = "id" <~~ json,
         let videoURL: URL = "video_url" <~~ json,

@@ -18,6 +18,7 @@ class ActivityViewController: UIViewController {
         super.viewDidLoad()
         
         activityViewModel.activityViewController = self
+        self.edgesForExtendedLayout = []
         
         skinCollectionView()
     }
@@ -26,6 +27,9 @@ class ActivityViewController: UIViewController {
         
         collectionView.dataSource = nil
         collectionView.delegate = nil
+        
+        collectionView.dataSource = activityViewModel.dataSource
+        activityViewModel.delegate = self
         
         collectionView.register(ActivityQuestionCell.self)
         collectionView.register(ActivityFollowCell.self)
@@ -37,10 +41,10 @@ class ActivityViewController: UIViewController {
                 width: screenWidth,
                 height: 100
             ),
-            insets: UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0),
+            insets: UIEdgeInsets(top: 25, left: 0, bottom: 15, right: 0),
             headerSize: CGSize(
                 width: screenWidth,
-                height: 65
+                height: 70
             ),
             spacing: 25
         )
@@ -50,17 +54,23 @@ class ActivityViewController: UIViewController {
         collectionView.collectionViewLayout = layout
         
         collectionView.refreshControl = UIRefreshControl()
-        
-        collectionView.dataSource = activityViewModel.dataSource
-        activityViewModel.delegate = self
     }
 }
 
 extension ActivityViewController: AnswerCellDelegate {
-    func didTapAnswer() {
-        let videoEditor = VideoEditingViewController(nibName: VideoEditingViewController.storyboardIdentifier, bundle: nil)
+    func didTapAnswer(answer: SectionItem) {
+        switch answer {
+        case .FollowCellItem:
+            break
+        case let .MyQuestionItem(question, _, _, questionId):
+            let videoEditor = VideoEditingViewController(nibName: VideoEditingViewController.storyboardIdentifier, bundle: nil)
+            let navigation = UINavigationController(rootViewController: videoEditor)
+            navigation.isNavigationBarHidden = true
+            videoEditor.videoEditingViewModel = VideoEditingViewModel(question: question, questionId: questionId)
+            
+            self.present(navigation, animated: true, completion: nil)
+        }
         
-        self.present(videoEditor, animated: true, completion: nil)
     }
 }
 

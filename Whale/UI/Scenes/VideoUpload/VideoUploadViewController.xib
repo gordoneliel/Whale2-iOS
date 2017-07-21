@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoUploadViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoUploadViewController" customModule="Whale" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="sLr-JZ-5dV" id="3hW-oR-X9j"/>
+                <outlet property="videoPlayerView" destination="1bN-9T-0Ni" id="B7f-Qy-iN3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +20,50 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sLr-JZ-5dV">
+                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                </activityIndicatorView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Faz-Eh-Q6O">
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77R-gC-QCE" customClass="RoundedButton" customModule="Whale" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <color key="backgroundColor" red="0.0" green="0.63294907509999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Upload Answer"/>
+                            <connections>
+                                <action selector="uploadPressed:" destination="-1" eventType="touchUpInside" id="hRo-QB-8cx"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.065957521079999998" green="0.06708616932" blue="0.068531411910000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstItem="77R-gC-QCE" firstAttribute="leading" secondItem="Faz-Eh-Q6O" secondAttribute="leading" id="4Tx-X0-DyK"/>
+                        <constraint firstItem="77R-gC-QCE" firstAttribute="top" secondItem="Faz-Eh-Q6O" secondAttribute="top" id="7aD-0p-Q3V"/>
+                        <constraint firstAttribute="height" constant="60" id="G7V-ad-jwa"/>
+                        <constraint firstAttribute="trailing" secondItem="77R-gC-QCE" secondAttribute="trailing" id="XWi-Zh-wfT"/>
+                        <constraint firstAttribute="bottom" secondItem="77R-gC-QCE" secondAttribute="bottom" id="obK-tt-dgy"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bN-9T-0Ni" customClass="VideoPlayerView" customModule="Whale" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.14592830129137146" green="0.14517995102833878" blue="0.14667665155440412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="Faz-Eh-Q6O" firstAttribute="top" secondItem="1bN-9T-0Ni" secondAttribute="bottom" id="9Kz-iO-UhS"/>
+                <constraint firstAttribute="bottom" secondItem="Faz-Eh-Q6O" secondAttribute="bottom" id="DWK-1N-wmO"/>
+                <constraint firstItem="sLr-JZ-5dV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="H8G-Zf-6sz"/>
+                <constraint firstItem="1bN-9T-0Ni" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SE5-Hm-qYO"/>
+                <constraint firstItem="sLr-JZ-5dV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WDk-rz-2Js"/>
+                <constraint firstAttribute="trailing" secondItem="1bN-9T-0Ni" secondAttribute="trailing" id="aDn-34-kgm"/>
+                <constraint firstAttribute="trailing" secondItem="Faz-Eh-Q6O" secondAttribute="trailing" id="gKX-g4-lvK"/>
+                <constraint firstItem="1bN-9T-0Ni" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="geI-IJ-64h"/>
+                <constraint firstItem="Faz-Eh-Q6O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ifa-Lq-G2j"/>
+                <constraint firstItem="1bN-9T-0Ni" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ke7-F4-0ft"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
 </document>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuC-uk-aMO" customClass="RoundedButton" customModule="Whale" customModuleProvider="target">
                             <rect key="frame" x="147.5" y="412" width="80" height="80"/>
-                            <color key="backgroundColor" red="0.74901960779999999" green="0.0" blue="0.40820895909999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.74901960779999999" green="0.074509803920000006" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="cax-Wn-Ij8"/>
                                 <constraint firstAttribute="width" secondItem="CuC-uk-aMO" secondAttribute="height" id="j7u-iu-2jQ"/>
@@ -44,7 +44,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usA-1r-rNx">
-                            <rect key="frame" x="15" y="15" width="40" height="40"/>
+                            <rect key="frame" x="15" y="25" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Hj0-kv-MdQ"/>
                                 <constraint firstAttribute="width" secondItem="usA-1r-rNx" secondAttribute="height" id="X0l-MZ-Ovd"/>
@@ -58,7 +58,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="usA-1r-rNx" firstAttribute="top" secondItem="vYY-oc-UHe" secondAttribute="top" constant="15" id="5Y5-0R-9B3"/>
+                        <constraint firstItem="usA-1r-rNx" firstAttribute="top" secondItem="vYY-oc-UHe" secondAttribute="top" constant="25" id="5Y5-0R-9B3"/>
                         <constraint firstAttribute="bottom" secondItem="CuC-uk-aMO" secondAttribute="bottom" constant="25" id="6uH-Zr-zau"/>
                         <constraint firstItem="usA-1r-rNx" firstAttribute="leading" secondItem="vYY-oc-UHe" secondAttribute="leading" constant="15" id="I78-i4-boI"/>
                         <constraint firstItem="CuC-uk-aMO" firstAttribute="centerX" secondItem="vYY-oc-UHe" secondAttribute="centerX" id="wxT-fm-37C"/>

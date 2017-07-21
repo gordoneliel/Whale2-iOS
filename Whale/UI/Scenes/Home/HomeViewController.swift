@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
                 width: screenWidth,
                 height: 300
             ),
-            headerSize: CGSize(width: screenWidth, height: 65),
+            headerSize: CGSize(width: screenWidth, height: 70),
             spacing: 15
         )
         
@@ -48,21 +48,17 @@ extension HomeViewController: UICollectionViewDelegate {
         
         viewModel.selectedItem = selectedItem
         
-        performSegue(withIdentifier: "videoSegue", sender: self)
-    }
-}
-
-extension HomeViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "videoSegue",
-            let destination = segue.destination as? VideoPlayerViewController,
-            let selectedItem = viewModel.selectedItem
-            else {return}
+        let videoVC = VideoPlayerViewController(
+            nibName: VideoPlayerViewController.storyboardIdentifier,
+            bundle: nil
+        )
         
-        destination.videoPlayerViewModel = VideoPlayerViewModel(
+        videoVC.videoPlayerViewModel = VideoPlayerViewModel(
             selectedAnswer: selectedItem,
             answerViewModels: viewModel.answers
         )
+        
+        present(videoVC, animated: true, completion: nil)
     }
 }
 

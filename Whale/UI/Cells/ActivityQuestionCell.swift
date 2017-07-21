@@ -9,11 +9,11 @@
 import UIKit
 
 protocol AnswerCellDelegate: class {
-    func didTapAnswer()
+    func didTapAnswer(answer: SectionItem)
 }
 
 class ActivityQuestionCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var questionUserCategory: UILabel!
     @IBOutlet weak var questionUserName: UILabel!
     @IBOutlet weak var questionUserImageView: CircularImageView!
@@ -24,7 +24,7 @@ class ActivityQuestionCell: UICollectionViewCell {
         didSet {
             
             switch viewModel! {
-            case let .MyQuestionItem(myQuestion, user, image):
+            case let .MyQuestionItem(myQuestion, user, image, _):
                 question.text = myQuestion
                 questionUserName.text = user
                 questionUserImageView.kf.setImage(with: image)
@@ -39,24 +39,28 @@ class ActivityQuestionCell: UICollectionViewCell {
         -> UICollectionViewLayoutAttributes {
             let attr = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
             
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
             
             let desiredHeight: CGFloat = self.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
             attr.frame.size.width = UIScreen.main.bounds.size.width
             attr.frame.size.height = desiredHeight
-            self.frame = attr.frame
+//            self.frame = attr.frame
+            
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
             
             return attr
     }
     
     @IBAction func answerButtonTapped(_ sender: UIButton) {
-        delegate?.didTapAnswer()
+        guard let answer = viewModel else {return}
+        
+        delegate?.didTapAnswer(answer: answer)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
-
+    
 }

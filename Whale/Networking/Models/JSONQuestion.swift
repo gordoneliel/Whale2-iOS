@@ -16,7 +16,7 @@ struct JSONQuestion {
     let receiver: JSONUser
 }
 
-extension JSONQuestion: Decodable {
+extension JSONQuestion: Gloss.Decodable {
     init?(json: JSON) {
         guard let id: Int = "id" <~~ json,
             let content: String = "content" <~~ json,

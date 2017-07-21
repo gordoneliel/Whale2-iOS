@@ -11,6 +11,9 @@ import UIKit
 class VideoEditingViewController: UIViewController {
     @IBOutlet weak var cameraPreview: CameraVideoView!
     @IBOutlet weak var editingSegmentsToolbar: VideoEditingToolbar!
+    
+    var videoEditingViewModel: VideoEditingViewModel?
+    
     var videoSegments: [VideoSegment] = [] {
         didSet {
             editingSegmentsToolbar.videoSegments = videoSegments
@@ -21,12 +24,17 @@ class VideoEditingViewController: UIViewController {
         super.viewDidLoad()
         
         cameraPreview.recordingDelegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         cameraPreview.startSession()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         cameraPreview.stopSession()
     }
     
@@ -49,8 +57,19 @@ class VideoEditingViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        let videoUploadVC = VideoUploadViewController(nibName: VideoUploadViewController.storyboardIdentifier, bundle: nil)
-        present(videoUploadVC, animated: true, completion: nil)
+        guard let videoEditingViewModel = videoEditingViewModel else {return}
+        
+        let videoUploadVC = VideoUploadViewController(
+            nibName: VideoUploadViewController.storyboardIdentifier,
+            bundle: nil
+        )
+        
+        videoUploadVC.uploadViewModel = VideoUploadViewModel(
+            segments: videoSegments,
+            editorViewModel: videoEditingViewModel
+        )
+        
+        show(videoUploadVC, sender: self)
     }
     
 }

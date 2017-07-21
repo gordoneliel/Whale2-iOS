@@ -33,7 +33,8 @@ class ActivityViewModel {
                         return SectionItem.MyQuestionItem(
                             question: $0.content,
                             user: "\($0.sender.firstName) \($0.sender.lastName)",
-                            image: $0.sender.profileImageUrl
+                            image: $0.sender.profileImageUrl,
+                            questionId: $0.id
                         )
                     }
                     

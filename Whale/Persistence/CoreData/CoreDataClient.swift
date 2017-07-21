@@ -18,7 +18,7 @@ class CoreDataClient {
         self.viewContext = stack.viewContext
     }
     
-    func one<T: NSManagedObject>(model: T.Type) -> T? where T: ManagedObjectType {
+    func one<T: NSManagedObject>(model: T.Type) -> T? {
         do {
             let request = NSFetchRequest<T>(entityName: model.entityName)
             return try viewContext.fetch(request).first
@@ -27,7 +27,7 @@ class CoreDataClient {
         }
     }
     
-    func all<T: NSManagedObject>(model: T.Type) -> [T] where T: ManagedObjectType {
+    func all<T: NSManagedObject>(model: T.Type) -> [T] {
         do {
             let request = NSFetchRequest<T>(entityName: model.entityName)
             return try viewContext.fetch(request)

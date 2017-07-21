@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     var profileViewModel = ProfileViewModel()
     
@@ -19,7 +19,8 @@ class ProfileViewController: UIViewController {
         setup()
         
         collectionView.refreshControl?.beginRefreshing()
-        profileViewModel.synchronizer.sync {
+        
+        self.profileViewModel.synchronizer.sync {
             self.collectionView.refreshControl?.endRefreshing()
         }
     }

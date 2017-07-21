@@ -9,14 +9,14 @@
 import Foundation
 import Gloss
 
-struct PageData<T: Decodable> {
+struct PageData<T: Gloss.Decodable> {
     let page: Int
     let perPage: Int
     let totalPages: Int
     let data: [T]
 }
 
-extension PageData: Decodable {
+extension PageData: Gloss.Decodable {
     init?(json: JSON) {
         guard let page: Int = "page" <~~ json,
             let perPage: Int = "per_page" <~~ json,

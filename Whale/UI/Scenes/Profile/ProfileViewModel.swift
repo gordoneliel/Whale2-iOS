@@ -25,18 +25,9 @@ class ProfileViewModel {
         let sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true)]
         fetchRequest.sortDescriptors = sortDescriptors
         
-        let resultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: synchronizer.coreDataClient.viewContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil
-        )
+        let userVM = self.userViewModel
+        guard let user = try! synchronizer.coreDataClient.viewContext.fetch(fetchRequest).first else {return}
         
-        try? resultsController.performFetch()
-        
-        var userVM = self.userViewModel
-        
-        guard let user = resultsController.fetchedObjects?.first else {return}
         let userViewModel = UserProfileCellViewModel(
             name: "\(user.firstName) \(user.lastName)",
             email: user.email,

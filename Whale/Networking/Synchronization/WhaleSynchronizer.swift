@@ -36,7 +36,7 @@ class WhaleSynchronizer {
                 else {
                     let newUser = User(context: self.coreDataClient.viewContext)
                     newUser.configureWithJSONUser(jsonUser)
-                    try? self.coreDataClient.viewContext.save()
+                    self.coreDataClient.saveStack()
                     return completionBlock()
             }
             
@@ -51,15 +51,16 @@ class WhaleSynchronizer {
             
             user = newUser
             // Save changes
-            try? self.coreDataClient.viewContext.save()
+            self.coreDataClient.saveStack()
             completionBlock()
-
         }
     }
     
-    private func downloadSync<T: NSManagedObject, U: Decodable>(entity: T.Type, jsonModel: U.Type, _ completionBlock: @escaping (_ entity: [T], _ jsonModel: U) -> Void) -> Void {
+    private func downloadSync<T: NSManagedObject, U: Gloss.Decodable>(entity: T.Type, jsonModel: U.Type, _ completionBlock: @escaping (_ entity: [T], _ jsonModel: U) -> Void) -> Void {
+        
         // Download model
         let downloadOperation = BlockOperation()
+        
         downloadOperation.addExecutionBlock {
             self.networking.request(self.whaleAPIClient) { completion in
                 switch completion {

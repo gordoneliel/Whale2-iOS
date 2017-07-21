@@ -15,7 +15,7 @@ struct JSONComment {
     let commenter: JSONUser
 }
 
-extension JSONComment: Decodable {
+extension JSONComment: Gloss.Decodable {
     
     // Used for posting a comment, we don't need commenter or id
     init(content: String) {
@@ -36,7 +36,7 @@ extension JSONComment: Decodable {
     }
 }
 
-extension JSONComment: Encodable {
+extension JSONComment: Gloss.Encodable {
     func toJSON() -> JSON? {
         return [
             "content": self.content

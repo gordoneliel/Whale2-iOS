@@ -11,9 +11,12 @@ import UIKit
 class VideoSegmentCell: UICollectionViewCell {
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        layer.cornerRadius = 6
+        clipsToBounds = true
     }
 
 }

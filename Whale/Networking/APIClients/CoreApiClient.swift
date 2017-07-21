@@ -27,6 +27,7 @@ enum CoreApiClient {
 //    case unfollowUser(userId: Int)
     
     case answers(page: Int, pageSize: Int)
+    case createAnswer(questionId: Int, video: URL, thumbnail: URL)
     case comments(answerId: Int, page: Int, pageSize: Int)
     case createComment(answerId: Int, content: String)
     
@@ -50,6 +51,8 @@ extension CoreApiClient: TargetType {
             return "v1/users"
         case .answers:
             return "v1/answers"
+        case let .createAnswer(questionId,  _, _):
+            return "v1/questions/\(questionId)/answers"
         case let .comments(answerId, _, _):
             return "v1/answers/\(answerId)/comments"
         case let .createComment(answerId, _):
@@ -63,12 +66,14 @@ extension CoreApiClient: TargetType {
         switch self {
         case .me,
              .users,
-             .authenticateUser,
              .answers,
              .comments,
              .questions:
             return .get
-        case .createUser, .createComment:
+        case .createUser,
+             .createComment,
+             .authenticateUser,
+             .createAnswer:
             return .post
         case .updateUser:
             return .patch
@@ -77,10 +82,15 @@ extension CoreApiClient: TargetType {
     
     var parameters: [String: Any]? {
         switch self {
-        case .me, .questions:
+        case .me,
+             .questions,
+             .createAnswer:
             return [:]
-        case .authenticateUser:
-            return [:]
+        case let .authenticateUser(email, password):
+            return [
+                "email": email,
+                "password": password
+            ]
         case .createUser:
             return [:]
         case .updateUser:
@@ -104,7 +114,15 @@ extension CoreApiClient: TargetType {
     }
     
     var task: Task {
-        return .request
+        switch self {
+        case let .createAnswer(_, video, thumbnail):
+            return .upload(.multipart([
+                MultipartFormData(provider: .file(video), name: video.description),
+                MultipartFormData(provider: .file(thumbnail), name: thumbnail.description)
+                ]))
+        default:
+            return .request
+        }
     }
     
     var sampleData: Data {
@@ -121,6 +139,8 @@ extension CoreApiClient: TargetType {
             return stubbedResponse("all_users")
         case .answers:
             return stubbedResponse("answers")
+        case .createAnswer:
+            return stubbedResponse("createAnswer")
         case .comments, .createComment:
             return stubbedResponse("comments")
         case .questions:

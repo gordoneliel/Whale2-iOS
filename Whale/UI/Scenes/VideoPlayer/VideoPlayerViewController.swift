@@ -10,6 +10,7 @@ import UIKit
 
 class VideoPlayerViewController: UIViewController {
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var commentCount: UIButton!
     @IBOutlet weak var likeCount: UIButton!
     @IBOutlet weak var commentButton: UIButton!
@@ -34,7 +35,7 @@ class VideoPlayerViewController: UIViewController {
         likeCount.setTitle(videoPlayerViewModel?.selectedAnswer.likeCount, for: .normal)
         commentCount.setTitle(videoPlayerViewModel?.selectedAnswer.commentCount, for: .normal)
         
-        videoPlayerView.videoURLs = (viewModel.selectedAnswer.videoURL, viewModel.answers.map{$0.videoURL})
+        videoPlayerView.videoURLs = (viewModel.selectedVideoURL, viewModel.videoURLS)
         
     }
     
@@ -50,36 +51,39 @@ class VideoPlayerViewController: UIViewController {
     @IBAction func playPressed(_ sender: UIButton) {
         if videoPlayerView.isPlaying {
             videoPlayerView.pause()
-            sender.isSelected = true
         }else {
             videoPlayerView.play()
-            sender.isSelected = false
         }
     }
     
     @IBAction func commentPressed(_ sender: UIButton) {
         
         videoPlayerView.pause()
+
+        let commentVC = CommentViewController(
+            nibName: CommentViewController.storyboardIdentifier,
+            bundle: nil
+        )
         
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: CommentViewController.storyboardIdentifier)
-        
-        guard let commentVC = vc as? CommentViewController,
-            let answerCellViewModel = videoPlayerViewModel?.selectedAnswer else {return}
-        
-        commentVC.commentViewModel = CommentViewModel(answerCellViewModel: answerCellViewModel)
+        commentVC.commentViewModel = CommentViewModel(
+            answerCellViewModel: videoPlayerViewModel!.selectedAnswer
+        )
         
         show(commentVC, sender: self)
     }
     
-    @IBAction func unwindToVideoPlayerView(segue: UIStoryboardSegue) {
-        segue.source.dismiss(animated: true, completion: nil)
+    @IBAction func closePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
 extension VideoPlayerViewController: VideoPlayerDelegate {
-    func playerDidStart(currentTime: Double) {
-        print(currentTime)
+    func playerDidStart(progess: Double) {
+        progressView.progress = Float(progess)
+    }
+    
+    func playerStarted() {
+        playPauseButton.isSelected = false
     }
     
     func playerDidEnd() {
